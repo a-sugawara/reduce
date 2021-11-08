@@ -14,11 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [3, 256]
-      },
     },
   }, {});
   Review.associate = function(models) {

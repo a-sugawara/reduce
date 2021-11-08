@@ -8,10 +8,10 @@ module.exports = {
 
       Example:*/
       return queryInterface.bulkInsert('Catagories', [
-        {catagory: "Music", createdAt: '2019-04-12', updatedAt: '2019-04-12'},
-        {catagory: "Photography", createdAt: '2019-04-12', updatedAt: '2019-04-12'},
-        {catagory: "Art", createdAt: '2019-04-12', updatedAt: '2019-04-12'},
-        {catagory: "Film", createdAt: '2019-04-12', updatedAt: '2019-04-12'},
+        {catagory: "Music"},
+        {catagory: "Photography"},
+        {catagory: "Art"},
+        {catagory: "Film"},
       ], {});
 
   },

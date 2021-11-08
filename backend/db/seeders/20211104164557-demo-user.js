@@ -7,26 +7,58 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [
       {
         email: 'demo@user.io',
-        username: 'Demo-lition',
+        username: 'Demo',
         hashedPassword: bcrypt.hashSync('password'),
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser1',
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        username: 'DjMixer',
+        hashedPassword: bcrypt.hashSync('password'),
       },
       {
         email: faker.internet.email(),
-        username: 'FakeUser2',
-        hashedPassword: bcrypt.hashSync(faker.internet.password()),
+        username: 'BradlyTrooper',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'AnnetteHall',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'Picaso',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'LilDeemo',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'StanleyShpererick',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'Cvatik',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'Salvador',
+        hashedPassword: bcrypt.hashSync('password'),
+      },
+      {
+        email: faker.internet.email(),
+        username: 'Ashton',
+        hashedPassword: bcrypt.hashSync('password'),
       },
     ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Users', {
-      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
-    }, {});
+    return queryInterface.bulkDelete('Users', null, {});
   }
 };

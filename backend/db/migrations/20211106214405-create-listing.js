@@ -31,7 +31,7 @@ module.exports = {
       },
       catagoryId: {
         allowNull: false,
-        type: Sequelize.INTEGER(255),
+        type: Sequelize.INTEGER,
         references: {model:"Catagories"}
       },
 
@@ -45,17 +45,23 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(255)
       },
+      description: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
       price: {
         allowNull: false,
         type: Sequelize.DECIMAL(10,2)
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },

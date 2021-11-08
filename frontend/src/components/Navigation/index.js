@@ -16,7 +16,7 @@ function Navigation({ isLoaded }){
     <NavLink to ="/listingpost">
       <div className="nav-btns">
         <div className="pro-btn">
-          Post a Listing
+          Become a Producer
         </div>
       </div>
     </NavLink>)

@@ -56,6 +56,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256]
       },
     },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        len: [10]
+      },
+    },
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
