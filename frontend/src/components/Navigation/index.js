@@ -10,25 +10,41 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
+  let producerButton;
   if (sessionUser) {
+    producerButton =(
+    <NavLink to ="/listingpost">
+      <div className="nav-btns">
+        <div className="pro-btn">
+          Post a Listing
+        </div>
+      </div>
+    </NavLink>)
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div className="nav-btns">
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
+    producerButton=(null)
     sessionLinks = (
-      <>
         <div className="nav-btns">
           <LoginFormModal />
           <SignUpFormModal/>
+          <div></div>
         </div>
-      </>
     );
   }
 
   return (
     <div className="nav">
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
+      <NavLink exact to="/">
+        <img
+          className="logo-img"
+          src="https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"/>
+      </NavLink>
+      {isLoaded && producerButton}
+      {isLoaded && sessionLinks}
     </div>
   );
 }

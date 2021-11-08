@@ -29,20 +29,28 @@ function ProfileButton({ user }) {
   };
 
   return (
-    <>
-      <button onClick={openMenu} className="pro-btn">
-        {user.username}
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
-    </>
+    <div className="pro-container">
+      <details className="details">
+          <summary>
+          <div className="pro-btn">
+            {user.username}
+          </div>
+        </summary>
+        {/* {showMenu && ( */}
+          <details-menu class="profile-dropdown">
+            <div>
+              <p>{user.username}</p>
+              <p>{user.email}</p>
+            </div>
+            <button
+              className="logout-btn"
+              onClick={logout}>
+                Log Out
+            </button>
+          </details-menu>
+        {/* )} */}
+      </details>
+    </div>
   );
 }
 

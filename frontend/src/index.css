@@ -1,4 +1,5 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,100;1,200;1,400&display=swap');
 .wrapper {
     display: flex;
 }
@@ -21,7 +22,122 @@
 }
 .btn-holder{
     display:flex;
+    width: 100%;
+    justify-content: space-around;
+    width: 95%;
+    margin:4rem;
+}
+.btn-group{
+    display: flex;
+    align-items: center;
     gap: 1rem;
-    justify-content: flex-start;
-    width: 95%
+}
+.btn-text{
+    display: flex;
+    flex-direction: column;
+    font-size:1.2rem;
+    height:100%;
+}
+.btn-text > p{
+ font-weight: bold;
+}
+.nav-btn{
+  background-color: white;
+  color: black;
+  font-size:1.2rem;
+  border-radius:40px;
+  outline:none;
+  border: none;
+  padding:5px 15px;
+  width: 7rem;
+  transition: all 1s ease;
+}
+.nav-btn:hover{
+    box-shadow: 0 0 20px black;
+    cursor: pointer;
+
+}
+.pro-btn{
+  background-color: black;
+  color: white;
+  font-size:1.2rem;
+  border-radius:40px;
+  outline:none;
+  border: none;
+  padding:5px 15px;
+  width: fit-content;
+  height: fit-content;
+  transition: all 0.5s ease;
+
+  font-family: 'Poppins', sans-serif;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.582); */
+
+}
+.pro-btn:hover{
+    box-shadow: 0 0 20px black;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+
+}
+.pro-container{
+    /* display:flex;
+    align-items: center;
+    margin: 1rem;
+    padding-top: 4rem;
+    z-index: 100;
+    background-color:white; */
+    position: relative;
+}
+.profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top:100%;
+    z-index: 100;
+    background: white;
+    width:100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+
+
+}
+
+details::-webkit-details-marker{
+    display: none;
+}
+.details{
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+
+details > summary {
+    list-style: none;
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+.logout-btn{
+    background-color: white;
+    color: black;
+    font-size:1.2rem;
+    border-radius:40px;
+    outline:none;
+    border: none;
+    padding:5px 15px;
+
+    height: fit-content;
+    transition: all 1s ease;
+
+}
+.logout-btn:hover{
+    box-shadow: 0 0 20px black;
+    cursor: pointer;
+    background-color:rgba(255, 166, 0, 0.5);
+
 }

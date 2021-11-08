@@ -19,18 +19,26 @@ function LoginForm() {
       }
     );
   };
+  let errorRender
+
+  if(errors.length > 0) {
+    errorRender = <ul>
+    {errors.map((error, idx) => (
+      <li key={idx}>{error}</li>
+    ))}
+  </ul>
+  }else{
+    errorRender = null
+  }
 
   return (
     <>
+      {errorRender}
+      <h2>Login</h2>
       <form
       onSubmit={handleSubmit}
       className="form"
       >
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
           <input
             type="text"
             value={credential}

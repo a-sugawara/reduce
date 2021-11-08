@@ -14,20 +14,20 @@ const SearchBar = () =>{
             if(wordidx < words.length -1){
                 setWordidx(prev => prev+1)
                 wordidx++
-                console.log("set interval", wordidx, words)
-                console.log("if")
+                // console.log("set interval", wordidx, words)
+                // console.log("if")
             }
             else{
                 setWordidx(0)
-                console.log("else")
+                // console.log("else")
                 wordidx=0
             }
         }, 2000)
         return ()=>{clearInterval(time)}
     },[])
 
-    console.log("before return", wordidx)
-    
+    // console.log("before return", wordidx)
+
     return (
         <div className="imagebar set">
             <div className="sentence">

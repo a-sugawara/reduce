@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,100;1,200;1,400&display=swap');
 #modal {
     position: fixed;
     top: 0;
@@ -27,7 +28,10 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-    padding:3rem;
     background-color:white;
     width:50%;
+    max-width:600px;
+    border-radius:50px;
+    border: 0.25rem solid white;
+    font-family: 'Poppins', sans-serif;
   }
