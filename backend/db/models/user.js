@@ -80,7 +80,21 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id);
   };
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Booking, {
+      foreignKey:"userId",
+      onDelete: 'cascade',
+      hook: true
+    })
+    User.hasMany(models.Review, {
+      foreignKey:"userId",
+      onDelete: 'cascade',
+      hook: true
+    })
+    User.hasMany(models.Listing, {
+      foreignKey:"userId",
+      onDelete: 'cascade',
+      hook: true
+    })
   };
 
   return User;
