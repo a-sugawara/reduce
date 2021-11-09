@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import CatagoryButton from "./components/CatagoryButton";
 import ListingForm from "./components/ListingForm";
 import Listings from "./components/Listings";
+import SingleListing from"./components/SingleListing"
 import * as listingActions from "./store/listing";
 
 
@@ -24,6 +25,7 @@ function App() {
 
   // {listings.forEach( listing => <div>{listing[1].name}</div> )}
   // listings.forEach( listing => console.log(listing[1].name) )
+
   return isLoaded && (
     <div>
       <Navigation isLoaded={isLoaded} />
@@ -35,37 +37,38 @@ function App() {
                 <SearchBar/>
                 <div className="btn-holder">
                   <div className="btn-group">
-                    <CatagoryButton/>
+                    <CatagoryButton url={"https://cdn.discordapp.com/attachments/906471684683493386/907148713351348264/PhotoIcon.png"}/>
                     <div className="btn-text">
-                      <p>Catagory</p>
+                      <p>Photo</p>
                       <a>Open slots</a>
                     </div>
                   </div>
                   <div className="btn-group">
                     <CatagoryButton url={"https://cdn.discordapp.com/attachments/906471684683493386/906600089638817802/AirTimeMusic.png"}/>
                     <div className="btn-text">
-                      <p>Catagory</p>
+                      <p>Music</p>
                       <a>Open slots</a>
                     </div>
                   </div>
                   <div className="btn-group">
-                    <CatagoryButton/>
+                    <CatagoryButton url={"https://cdn.discordapp.com/attachments/906471684683493386/907151909612294164/FilmIcon.png"}/>
                     <div className="btn-text">
-                      <p>Catagory</p>
+                      <p>Film</p>
                       <a>Open slots</a>
                     </div>
                   </div>
                   <div className="btn-group">
-                    <CatagoryButton/>
+                    <CatagoryButton url={"https://cdn.discordapp.com/attachments/906471684683493386/907155200572264518/artIcon.png"}/>
                     <div className="btn-text">
-                      <p>Catagory</p>
+                      <p>Art</p>
                       <a>Open slots</a>
                     </div>
                   </div>
                 </div>
-                <div>
-                {listings.map(listing => <div>{listing.name}</div>)}
-                </div>
+                
+                  <Listings listings={listings}/>
+                {/* {listings.map(listing => <div>{listing.name}</div>)} */}
+
               </Route>
               <Route path="/login">
                 <h1>Login</h1>
@@ -77,8 +80,11 @@ function App() {
               <Route path="/listingpost">
                 <ListingForm/>
               </Route>
-              <Route path="/listings">
+              <Route exact path="/listings">
                 <Listings/>
+              </Route>
+              <Route path="/listings/:id">
+                <SingleListing/>
               </Route>
             </Switch>
         </div>

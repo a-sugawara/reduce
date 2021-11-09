@@ -3,11 +3,13 @@ import * as listingActions from '../../store/listing';
 import { getCatagories } from '../../store/catagory';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
-import './ListingForm.css';
+// import './ListingForm.css';
 
-function ListingForm() {
+function ListingEditForm({listing}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+
+  console.log(listing)
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setSt] = useState('');
@@ -44,7 +46,8 @@ function ListingForm() {
     e.preventDefault();
     setErrors([]);
     console.log(catagory)
-    dispatch(listingActions.lister({
+    dispatch(listingActions.updateListing({
+        id:listing.id,
         userId:sessionUser.id,
         city,
         address,
@@ -59,9 +62,7 @@ function ListingForm() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
     });
-
     history.push("/")
-
   }
 
 
@@ -170,4 +171,4 @@ function ListingForm() {
   );
 }
 
-export default ListingForm;
+export default ListingEditForm;

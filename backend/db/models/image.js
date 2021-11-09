@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image', {
-    spotId:{
+    listingId:{
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {

@@ -4,8 +4,6 @@ import"./SearchBar.css"
 const words = ["art", "music", "film"]
 
 const SearchBar = () =>{
-
-    const [image, setImage] = useState("set")
     let [wordidx, setWordidx] = useState(0)
 
     useEffect(() => {
@@ -30,9 +28,6 @@ const SearchBar = () =>{
 
     return (
         <div className="imagebar set">
-            <div className="sentence">
-                <p>Find your&nbsp;<span className="orange">{words[wordidx]}</span>&nbsp;studio</p>
-            </div>
             <div className="search-bar">
                 <form className="search-form">
                 <img className="search-icon"
@@ -40,6 +35,9 @@ const SearchBar = () =>{
                     <input type="search" className="search-input">
                     </input>
                 </form>
+            </div>
+            <div className="sentence">
+                <p>Find your&nbsp;<span className="orange">{words[wordidx]}</span>&nbsp;studio</p>
             </div>
         </div>
     )

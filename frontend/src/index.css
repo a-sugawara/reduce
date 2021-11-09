@@ -1,5 +1,11 @@
 /* TODO Add site wide styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;1,100;1,200;1,400&display=swap');
+a{
+    text-decoration:none;
+}
+#root{
+    font-family: 'Poppins', sans-serif;
+}
 .wrapper {
     display: flex;
 }
@@ -98,7 +104,8 @@
     top:100%;
     z-index: 100;
     background: white;
-    width:100%;
+    width:120%;
+    padding-bottom: 1rem;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     font-family: 'Poppins', sans-serif;

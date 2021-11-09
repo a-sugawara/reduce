@@ -1,0 +1,56 @@
+.sidebar2{
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+}
+.mainbar2{
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+    align-items: center;
+}
+.listings-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.photosbox{
+    display: flex;
+    margin:2rem;
+    gap:0.25rem;
+}
+.three-photo-box{
+    display: flex;
+    flex-direction: column;
+    gap:0.25rem;
+}
+.two-photo-box{
+    display: flex;
+    gap:0.25rem;
+}
+.photo1{
+    width: 50%;
+    height:auto;
+    border-radius: 20px;
+
+}
+.photo2{
+    width: 50%;
+    height:auto;
+    border-radius: 20px;
+
+}
+.photo3{
+    width: 50%;
+    height:auto;
+    border-radius: 20px;
+
+}
+.photo4{
+    width: 100%;
+    height:auto;
+    border-radius: 20px;
+
+}

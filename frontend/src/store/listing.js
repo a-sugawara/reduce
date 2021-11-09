@@ -2,6 +2,8 @@ import { csrfFetch } from './csrf';
 
 const POST_LIST = 'listing/postListing'
 const LOAD_LIST = 'listing/load'
+const DELETE_LIST = 'listing/delete'
+const UPDATE_LIST = 'listing/update'
 
 
 
@@ -18,7 +20,18 @@ const loadListings = (payload)=>{
     payload
   }
 }
-
+const removeListing=(id)=>{
+  return{
+    type:DELETE_LIST,
+    id
+  }
+}
+const updateList = (data)=>{
+  return{
+    type:UPDATE_LIST,
+    data
+  }
+}
 
 
 export const lister = listing => async (dispatch) => {
@@ -30,7 +43,8 @@ export const lister = listing => async (dispatch) => {
         country,
         catagoryId,
         name,
-        price
+        price,
+        description
     } = listing;
     console.log(catagoryId)
     const response = await csrfFetch("/api/listings", {
@@ -43,7 +57,8 @@ export const lister = listing => async (dispatch) => {
         country,
         catagoryId,
         name,
-        price
+        price,
+        description
       }),
     });
     const data = await response.json();
@@ -54,11 +69,50 @@ export const lister = listing => async (dispatch) => {
 export const listed = () => async (dispatch) => {
   const response = await csrfFetch('/api/listings')
   const data = await response.json()
-  dispatch(loadListings(data.listings))
+  dispatch(loadListings(data.listing))
   return response
 }
 
-const initialState = { isLoaded:false };
+export const unlisted = (id) => async (dispatch)=>{
+  await csrfFetch(`/api/listings/${id}`,{
+    method: 'DELETE',
+  })
+  dispatch(removeListing(id))
+}
+
+export const updateListing = (listing) => async dispatch =>{
+  const {
+    id,
+    userId,
+    address,
+    city,
+    state,
+    country,
+    catagoryId,
+    name,
+    price,
+    description
+  } = listing;
+  const res = await csrfFetch(`/api/listings/${id}`,{
+    method: 'PUT',
+    body: JSON.stringify({
+      userId,
+      address,
+      city,
+      state,
+      country,
+      catagoryId,
+      name,
+      price,
+      description
+    }),
+  })
+  const data = res.json()
+  dispatch(updateList(data))
+  return res
+}
+
+const initialState = {};
 
 const listingReducer = (state = initialState, action) => {
 let newState;
@@ -68,11 +122,21 @@ switch (action.type) {
     action.payload.forEach(listing=> {
       newState[listing.id] = listing
     })
-    newState.isLoaded=true
     return newState;
     case POST_LIST:
-      newState = Object.assign({}, state);
+      newState = Object.assign({}, state); //newstate= {..state}
+      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
       newState[action.payload.id] = action.payload;
+      return newState;
+    case DELETE_LIST:
+      newState = Object.assign({}, state); //newstate= {..state}
+      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
+      newState[action.id] = null
+      return newState;
+    case UPDATE_LIST:
+      newState = Object.assign({}, state); //newstate= {..state}
+      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
+      newState[action.data.id] = action.payload;
       return newState;
     default:
       return state;
