@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
     const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    return { id:id, username:username, email:email };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -80,7 +80,21 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id);
   };
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Booking, {
+      foreignKey:"userId",
+      onDelete: 'cascade',
+      hook: true
+    })
+    User.hasMany(models.Review, {
+      foreignKey:"userId",
+      onDelete: 'cascade',
+      hook: true
+    })
+    User.hasMany(models.Listing, {
+      foreignKey:"userId",
+      onDelete: 'cascade',
+      hook: true
+    })
   };
 
   return User;

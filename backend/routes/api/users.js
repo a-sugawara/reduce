@@ -37,9 +37,11 @@ router.post(
       await setTokenCookie(res, user);
 
       return res.json({
-        user,
+        user
       });
     }),
 );
+
+//data ={user:{email:email, password:password, username:username}}
 
 module.exports = router;
