@@ -60,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [10]
+        len: [10,100]
       },
     },
     price: {
@@ -73,6 +73,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Listing.associate = function(models) {
     Listing.hasMany(models.Image, {
+      foreignKey:"listingId",
+      onDelete: 'cascade',
+      hook: true
+    })
+    Listing.hasMany(models.Booking, {
       foreignKey:"listingId",
       onDelete: 'cascade',
       hook: true

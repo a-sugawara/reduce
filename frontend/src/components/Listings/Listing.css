@@ -6,8 +6,8 @@
     border-radius: 50px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.465);
     transition: all 0.25s ease-in-out;
-    width: 15rem;
-    height:18rem;
+    width: 25rem;
+    height:27rem;
 }
 .listing-card-d{
     display: flex;
@@ -19,17 +19,18 @@
     padding-top: 1rem;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.465);
     transition: all 0.25s ease-in-out;
-    width: 15rem;
-    height:18rem;
+    width: 25rem;
+    height:26rem;
 }
 .listing-card-img{
-    height: 10rem;
-    width: auto;
+    height: auto;
+    width: 25rem;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 }
 .listing-card-dimg{
-    height: 9rem;
+    width: 15rem;
+    height: 15rem;
     width: auto;
 }
 .listing-card-info{
@@ -37,12 +38,17 @@
 }
 
 .listing-card:hover{
-    transform:scale(1.10)
-
+    transform:scale(1.10);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.465);
+}
+.listing-card-d:hover{
+    transform:scale(1.10);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.465);
 }
 .listings{
     display: flex;
     justify-content:space-around;
-    width:100%
+    width:100%;
+    flex-wrap: wrap;
 
 }

@@ -13,8 +13,7 @@ function Listings() {
     //     <Redirect to="/" />
     // }
 
-    const listings = Object.entries(useSelector(state => state.listing)).map(listing => listing[1])
-
+    const listings = Object.values(useSelector(state => state.listing))
     useEffect(() => {
         dispatch(listingActions.listed()).then(() => setIsLoaded(true))
       }, [dispatch]);
