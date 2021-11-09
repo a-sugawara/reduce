@@ -117,11 +117,11 @@ const initialState = {};
 const listingReducer = (state = initialState, action) => {
 let newState;
 switch (action.type) {
-  case LOAD_LIST:
-    newState = Object.assign({}, state);
-    action.payload.forEach(listing=> {
-      newState[listing.id] = listing
-    })
+    case LOAD_LIST:
+      newState = Object.assign({}, state);
+      action.payload.forEach(listing=> {
+        newState[listing.id] = listing
+      })
     return newState;
     case POST_LIST:
       newState = Object.assign({}, state); //newstate= {..state}

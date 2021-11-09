@@ -71,7 +71,7 @@ function ListingForm() {
         <ul className="errors-list">
             {errors.map((error, id) => <li key={id}>{error}</li>)}
         </ul>
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
             <input
             type="text"
             placeholder="Address"
@@ -79,6 +79,7 @@ function ListingForm() {
             required
             value={address}
             onChange={e=> setAddress(e.target.value)} />
+            className="form-input"
             <input
             type="text"
             placeholder="City"
@@ -86,6 +87,7 @@ function ListingForm() {
             required
             value={city}
             onChange={e=> setCity(e.target.value)} />
+            className="form-input"
             <input
             type="text"
             placeholder="State"
@@ -93,6 +95,7 @@ function ListingForm() {
             required
             value={state}
             onChange={e=> setSt(e.target.value)} />
+            className="form-input"
             <input
             type="text"
             placeholder="Country"
@@ -100,6 +103,7 @@ function ListingForm() {
             required
             value={country}
             onChange={e=> setCountry(e.target.value)} />
+            className="form-input"
             <input
             type="text"
             placeholder="Name"
@@ -107,6 +111,7 @@ function ListingForm() {
             required
             value={name}
             onChange={e=> setName(e.target.value)} />
+            className="form-input"
             <input
             type="number"
             placeholder="Price"
@@ -114,13 +119,14 @@ function ListingForm() {
             required
             value={price}
             onChange={e=> setPrice(e.target.value)} />
+            className="form-input"
             <textarea
             placeholder="Description"
             min="1"
             required
             value={description}
             onChange={e=> setDescription(e.target.value)} />
-
+            className="form-input"
             <div>
                 <label>
                     <input
