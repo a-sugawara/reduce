@@ -24,7 +24,6 @@ router.post(
         startTime,
         endTime
       } = req.body;
-      console.log(req.body,"XXXXXXXXXXXX")
       const booking = await Booking.create({
         userId,
         listingId,

@@ -27,7 +27,7 @@ function ListingForm() {
 
   const catagories = useSelector(state => state.catagory.catagories);
 
-//   console.log("cat",catagories)
+
 
   if(!sessionUser){
       return null
@@ -43,7 +43,7 @@ function ListingForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    console.log(catagory)
+    
     dispatch(listingActions.lister({
         userId:sessionUser.id,
         city,

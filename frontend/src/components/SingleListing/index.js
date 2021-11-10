@@ -22,15 +22,14 @@ function SingleListing(){
     const [rating, setRating] = useState(3);
 
     const handleBooking= () =>{
-        console.log(startTime)
-        console.log(endTime,"TIMMMEE")
+       
         dispatch(book({
             userId: sessionUser.id,
             listingId:id,
             startTime,
             endTime
         }))
-        history.push("/submission")
+        history.push("/booked")
     }
     const handleReview= () =>{
         dispatch(reviewer({
@@ -39,7 +38,7 @@ function SingleListing(){
             review,
             rating
         }))
-        history.push("/submission")
+        history.push("/reviewed")
     }
 
     let reviews
@@ -49,7 +48,7 @@ function SingleListing(){
     }else{
         if (listing.Reviews){
             reviews = listing.Reviews.map((review,idx)=>{
-                if(sessionUser.id === review.userId){
+                if(sessionUser?.id === review.userId){
                 return  <div>
                             <p key={idx}>{review.review}</p>
                             <button>delete</button>

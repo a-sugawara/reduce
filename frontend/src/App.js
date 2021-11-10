@@ -23,13 +23,10 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch, Listings]);
 
-  const d= new Date(Date.now());
-  console.log(d)
 
 
 
-  // {listings.forEach( listing => <div>{listing[1].name}</div> )}
-  // listings.forEach( listing => console.log(listing[1].name) )
+
 
   return isLoaded && (
     <div>
@@ -102,7 +99,15 @@ function App() {
                 <h2>Your Studio is under Review</h2>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
               </Route>
-              <Route path="/user/:id">
+              <Route path="/booked">
+                <h2>Nice! You're Booked! We've sent you an email</h2>
+                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+              </Route>
+              <Route path="/reviewed">
+                <h2>Thank you! Your feedback is very important to us! </h2>
+                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+              </Route>
+              <Route path="/profile">
                 <ProfilePage/>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
               </Route>

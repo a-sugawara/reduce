@@ -17,7 +17,7 @@ export const book = listing => async (dispatch) => {
         startTime,
         endTime
     } = listing;
-    console.log(listing, "LLLIIISSSTTTINGGG")
+    
     const response = await csrfFetch("/api/booking", {
       method: "POST",
       body: JSON.stringify({

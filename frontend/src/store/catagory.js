@@ -14,7 +14,7 @@ export const getCatagories = listing => async (dispatch) => {
 
     const response = await csrfFetch("/api/listings/catagories");
     const data = await response.json();
-    console.log("data",data)
+    
     dispatch(loadCategory(data));
 
     return response;

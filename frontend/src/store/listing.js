@@ -46,7 +46,7 @@ export const lister = listing => async (dispatch) => {
         price,
         description
     } = listing;
-    console.log(catagoryId)
+    
     const response = await csrfFetch("/api/listings", {
       method: "POST",
       body: JSON.stringify({
