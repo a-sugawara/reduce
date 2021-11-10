@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import './Listing.css';
 
+
 function Listings() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -13,11 +14,10 @@ function Listings() {
     //     <Redirect to="/" />
     // }
 
-    const listings = Object.values(useSelector(state => state.listing))
     useEffect(() => {
         dispatch(listingActions.listed()).then(() => setIsLoaded(true))
-      }, [dispatch]);
-
+    }, [dispatch]);
+    let listings = Object.values(useSelector(state => state.listing))
 
 
 

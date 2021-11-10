@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { Listing, Catagory,Image, User, Booking, Review } = require('../../db/models');
 
 const router = express.Router();
 
@@ -25,15 +25,19 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
-    const user = await User.login({ credential, password });
+    const check = await User.login({ credential, password });
 
-    if (!user) {
+
+    if (!check) {
       const err = new Error('Login failed');
       err.status = 401;
       err.title = 'Login failed';
       err.errors = ['The provided credentials were invalid.'];
       return next(err);
     }
+    const user = await User.findByPk(check.id,{
+      include:[{model:Listing},{model:Booking},{model:Review},]
+    })
 
     await setTokenCookie(res, user);
 
@@ -58,7 +62,7 @@ router.get(
       const { user } = req;
       if (user) {
         return res.json({
-          user: user.toSafeObject()
+          user
         });
       } else return res.json({});
     }

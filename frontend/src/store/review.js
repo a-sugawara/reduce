@@ -1,75 +1,64 @@
 import { csrfFetch } from './csrf';
 
-const POST_LIST = 'listing/postListing'
-const LOAD_LIST = 'listing/load'
-const DELETE_LIST = 'listing/delete'
-const UPDATE_LIST = 'listing/update'
+const POST_REVIEW = 'review/postListing'
+const LOAD_REVIEW = 'review/load'
+const DELETE_REVIEW = 'review/delete'
+const UPDATE_REVIEW = 'review/update'
 
 
 
-const postListing = (listing) => {
+const postReview = (review) => {
     return {
-      type: POST_LIST,
-      payload: listing,
+      type: POST_REVIEW,
+      review
     };
 };
 
-const loadListings = (payload)=>{
+const loadReview = (payload)=>{
   return{
-    type:LOAD_LIST,
+    type:LOAD_REVIEW,
     payload
   }
 }
-const removeListing=(id)=>{
+const removeReview=(id)=>{
   return{
-    type:DELETE_LIST,
+    type:DELETE_REVIEW,
     id
   }
 }
-const updateList = (data)=>{
+const updateReview = (data)=>{
   return{
-    type:UPDATE_LIST,
+    type:UPDATE_REVIEW,
     data
   }
 }
 
 
-export const lister = listing => async (dispatch) => {
+export const reviewer = listing => async (dispatch) => {
     const {
+        listingId,
         userId,
-        address,
-        city,
-        state,
-        country,
-        catagoryId,
-        name,
-        price,
-        description
+        review,
+        rating
     } = listing;
-    console.log(catagoryId)
-    const response = await csrfFetch("/api/listings", {
+    const response = await csrfFetch("/api/review", {
       method: "POST",
       body: JSON.stringify({
+        listingId,
         userId,
-        address,
-        city,
-        state,
-        country,
-        catagoryId,
-        name,
-        price,
-        description
+        review,
+        rating
       }),
     });
     const data = await response.json();
-    dispatch(postListing(data.listing));
+    dispatch(postReview(data.newReview));
     return response;
 };
 
 export const listed = () => async (dispatch) => {
   const response = await csrfFetch('/api/listings')
   const data = await response.json()
-  dispatch(loadListings(data.listing))
+  dispatch(loadReview(data.listing))
   return response
 }
 
@@ -77,10 +66,10 @@ export const unlisted = (id) => async (dispatch)=>{
   await csrfFetch(`/api/listings/${id}`,{
     method: 'DELETE',
   })
-  dispatch(removeListing(id))
+  dispatch(removeReview(id))
 }
 
-export const updateListing = (listing) => async dispatch =>{
+export const updateRev = (listing) => async dispatch =>{
   const {
     id,
     userId,
@@ -108,33 +97,31 @@ export const updateListing = (listing) => async dispatch =>{
     }),
   })
   const data = res.json()
-  dispatch(updateList(data))
+  dispatch(updateReview(data))
   return res
 }
 
 const initialState = {};
 
-const listingReducer = (state = initialState, action) => {
+const reviewReducer = (state = initialState, action) => {
 let newState;
 switch (action.type) {
-    case LOAD_LIST:
+    case LOAD_REVIEW:
       newState = Object.assign({}, state);
       action.payload.forEach(listing=> {
         newState[listing.id] = listing
       })
     return newState;
-    case POST_LIST:
-      newState = Object.assign({}, state); //newstate= {..state}
-      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
-      newState[action.payload.id] = action.payload;
+    case POST_REVIEW:
+      newState = Object.assign({}, state);
+      newState[action.review.id] = action.review;
       return newState;
-    case DELETE_LIST:
+    case DELETE_REVIEW:
       newState = Object.assign({}, state);
       delete newState[action.id]
       return newState;
-    case UPDATE_LIST:
-      newState = Object.assign({}, state); //newstate= {..state}
-      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
+    case UPDATE_REVIEW:
+      newState = Object.assign({}, state);
       newState[action.data.id] = action.payload;
       return newState;
     default:
@@ -142,4 +129,4 @@ switch (action.type) {
 }
 };
 
-  export default listingReducer;
+  export default reviewReducer;

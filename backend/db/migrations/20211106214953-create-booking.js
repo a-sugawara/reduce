@@ -18,9 +18,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {model:'Users'}
       },
-      rentDate: {
+      startTime: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.STRING
+      },
+      endTime: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Listing, Catagory,Image, User, Booking } = require('../../db/models');
+const { Listing, Catagory,Image, User, Booking, Review } = require('../../db/models');
 
 const router = express.Router();
 
@@ -85,7 +85,7 @@ router.post(
 
 router.get('/',asyncHandler(async(req,res)=>{
   const listing= await Listing.findAll({
-    include:[{model:Image},{model:User},{model:Booking}]
+    include:[{model:Image},{model:User},{model:Booking},{model:Review}]
   })
   res.json({listing})
 
@@ -94,7 +94,7 @@ router.get('/',asyncHandler(async(req,res)=>{
 router.get('/:pk',asyncHandler(async(req,res)=>{
   const {pk} = req.params
   const listings= await Listing.findByPk(pk,{
-    include:[{model:Image},{model:User},{model:Booking}]
+    include:[{model:Image},{model:User},{model:Booking},{model:Review}]
   })
   res.json({listings})
 

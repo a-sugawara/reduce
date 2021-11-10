@@ -7,10 +7,10 @@ import ListingEditModal from "../ListingEditModal"
 import ListingDeleteModal from '../ListingDeleteModal';
 import {book} from "../../store/booking"
 import {reviewer} from "../../store/review"
-import './SingleListing.css';
+import './ProfilePage.css';
 import { Redirect, useHistory } from 'react-router-dom';
 
-function SingleListing(){
+function ProfilePage(){
     const dispatch = useDispatch();
     const history = useHistory();
     const {id} = useParams()
@@ -180,4 +180,4 @@ function SingleListing(){
     )
 }
 
-export default SingleListing;
+export default ProfilePage;

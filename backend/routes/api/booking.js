@@ -16,15 +16,22 @@ const validateBookings = [
 
 router.post(
     '/',
-    validateBookings,
+    // validateBookings,
     asyncHandler(async (req, res,next) => {
       const {
-        rentDate
-    } = req.body;
+        userId,
+        listingId,
+        startTime,
+        endTime
+      } = req.body;
+      console.log(req.body,"XXXXXXXXXXXX")
       const booking = await Booking.create({
-        rentDate
+        userId,
+        listingId,
+        startTime,
+        endTime
       });
-      if (!listing) {
+      if (!booking) {
         const err = new Error('Posting failed');
         err.status = 401;
         err.title = 'Posting failed';
@@ -67,20 +74,28 @@ router.put(
   asyncHandler(async (req, res,next) => {
     const id = req.params.id
     const {
-      rentDate
+      userId,
+      listingsId,
+      startTime,
+      endTime,
     } = req.body;
     const listing = await Listing.findByPk(id)
-    const updated = await listing.update({rentDate});
-    if (!listing) {
+    const updated = await listing.update({
+      userId,
+      listingsId,
+      startTime,
+      endTime,
+    });
+    if (!updated) {
       const err = new Error('Posting failed');
       err.status = 401;
       err.title = 'Posting failed';
       err.errors = ['The provided information was invalid.'];
       return next(err);
     }
-    return res.json({
+    return res.json(
       updated
-    });
+    );
   }),
 );
 

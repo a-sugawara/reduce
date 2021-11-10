@@ -61,8 +61,8 @@ function ListingEditForm({listing}) {
         .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-    });
-    history.push("/")
+    }).then(() => <Redirect to="/"/>)
+    history.push("/submission")
   }
 
 

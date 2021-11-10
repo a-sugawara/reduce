@@ -60,7 +60,7 @@ function ListingForm() {
         if (data && data.errors) setErrors(data.errors);
     });
 
-    history.push("/")
+    history.push("/submission")
 
   }
 
@@ -71,74 +71,79 @@ function ListingForm() {
         <ul className="errors-list">
             {errors.map((error, id) => <li key={id}>{error}</li>)}
         </ul>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="Radioform" onSubmit={handleSubmit}>
+            <h1 className="white" >Become a Producer</h1>
             <input
             type="text"
             placeholder="Address"
             min="1"
             required
+            className="form-input"
             value={address}
             onChange={e=> setAddress(e.target.value)} />
-            className="form-input"
+
             <input
             type="text"
             placeholder="City"
             min="1"
             required
             value={city}
-            onChange={e=> setCity(e.target.value)} />
             className="form-input"
+            onChange={e=> setCity(e.target.value)} />
             <input
             type="text"
             placeholder="State"
             min="1"
             required
+            className="form-input"
             value={state}
             onChange={e=> setSt(e.target.value)} />
-            className="form-input"
             <input
             type="text"
             placeholder="Country"
             min="1"
             required
             value={country}
-            onChange={e=> setCountry(e.target.value)} />
             className="form-input"
+            onChange={e=> setCountry(e.target.value)} />
+
             <input
             type="text"
             placeholder="Name"
             min="1"
             required
+            className="form-input"
             value={name}
             onChange={e=> setName(e.target.value)} />
-            className="form-input"
             <input
             type="number"
             placeholder="Price"
             min="1"
             required
+            className="form-input"
             value={price}
             onChange={e=> setPrice(e.target.value)} />
-            className="form-input"
             <textarea
             placeholder="Description"
             min="1"
             required
+            className="form-text-input"
             value={description}
             onChange={e=> setDescription(e.target.value)} />
-            className="form-input"
-            <div>
-                <label>
+            <div className="radioButtons"> Please Pick a Category</div>
+            <div className="radiowrapper">
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
                         name="photoType"
+                        className="radioButtons"
                         checked={catagory === catagories[0][0]}
                         onChange={(e) => setCatagory(catagories[0][0])}
                     />
                     Music
                 </label>
-                <label>
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
@@ -148,7 +153,7 @@ function ListingForm() {
                     />
                     Photography
                 </label>
-                <label>
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
@@ -158,7 +163,7 @@ function ListingForm() {
                     />
                     Art
                 </label>
-                <label>
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"

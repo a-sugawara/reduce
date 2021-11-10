@@ -7,7 +7,8 @@ module.exports = {
         {
           listingId:1,
           userId: 2,
-          rentDate:'2021-12-12'
+          startTime:'2021-12-12',
+          endTime:'2021-12-12'
         },
     ], {});
 
