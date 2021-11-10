@@ -32,30 +32,30 @@ module.exports = {
           address:"436 struvstat ave",
           state:"New York",
           country:"USA",
-          catagoryId:1,
+          catagoryId:2,
           name:"Photobooth",
           price:60,
           description:"Amazing Fully Lit Film & Photo Studio with White Cyclorama Wall - Lights Included!"
         },
         {
           userId:4,
-          city:"New York",
-          address:"32 Ralph place",
-          state:"New York",
+          city:"Kansas City",
+          address:"15 RoadHome drive",
+          state:"Kansas",
           country:"USA",
           catagoryId:1,
-          name:"TKStudioz(Brooklyn)",
+          name:"The Old RoadHome",
           price:40,
-          description:"Welcome to our one of a kind luxury music studio in the heart of Brooklyn, NY. Step into this state of the art space and fulfill all of your music oriented dreams. Our elegant space comes equipped with the greatest top notch amenities available."
+          description:"Built in early 1900, our home offers a genuine antique feel. We have art supplies in the back"
         },
         {
           userId:5,
-          city:"New York",
-          address:"32 Ralph place",
-          state:"New York",
+          city:"Las Vegas",
+          address:"15 Walter Ave",
+          state:"Nevada",
           country:"USA",
           catagoryId:1,
-          name:"TKStudioz(Brooklyn)",
+          name:"BackYard Studios",
           price:40,
           description:"Welcome to our one of a kind luxury music studio in the heart of Brooklyn, NY. Step into this state of the art space and fulfill all of your music oriented dreams. Our elegant space comes equipped with the greatest top notch amenities available."
         },
@@ -66,9 +66,9 @@ module.exports = {
           state:"New York",
           country:"USA",
           catagoryId:1,
-          name:"TKStudioz(Brooklyn)",
+          name:"TKStudioz(Harlem)",
           price:40,
-          description:"Welcome to our one of a kind luxury music studio in the heart of Brooklyn, NY. Step into this state of the art space and fulfill all of your music oriented dreams. Our elegant space comes equipped with the greatest top notch amenities available."
+          description:"Welcome to our one of a kind luxury music studio in the heart of Harlem, NY. Step into this state of the art space and fulfill all of your music oriented dreams. Our elegant space comes equipped with the greatest top notch amenities available."
         },
         {
           userId:6,

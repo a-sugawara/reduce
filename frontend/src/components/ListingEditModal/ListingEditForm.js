@@ -9,7 +9,7 @@ function ListingEditForm({listing}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
-  console.log(listing)
+
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setSt] = useState('');
@@ -29,7 +29,7 @@ function ListingEditForm({listing}) {
 
   const catagories = useSelector(state => state.catagory.catagories);
 
-//   console.log("cat",catagories)
+
 
   if(!sessionUser){
       return null
@@ -45,7 +45,7 @@ function ListingEditForm({listing}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    console.log(catagory)
+    
     dispatch(listingActions.updateListing({
         id:listing.id,
         userId:sessionUser.id,
