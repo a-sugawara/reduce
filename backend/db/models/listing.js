@@ -74,13 +74,18 @@ module.exports = (sequelize, DataTypes) => {
   Listing.associate = function(models) {
     Listing.hasMany(models.Image, {
       foreignKey:"listingId",
-      onDelete: 'cascade',
-      hook: true
+      onDelete: 'CASCADE',
+      hooks: true
     })
     Listing.hasMany(models.Booking, {
       foreignKey:"listingId",
-      onDelete: 'cascade',
-      hook: true
+      onDelete: 'CASCADE',
+      hooks: true
+    })
+    Listing.hasMany(models.Review, {
+      foreignKey:"listingId",
+      onDelete: 'CASCADE',
+      hooks: true
     })
     Listing.belongsTo(models.User, {foreignKey:"userId"})
     Listing.belongsTo(models.Catagory, {foreignKey:"catagoryId"})

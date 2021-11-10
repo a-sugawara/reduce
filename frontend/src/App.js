@@ -10,18 +10,23 @@ import CatagoryButton from "./components/CatagoryButton";
 import ListingForm from "./components/ListingForm";
 import Listings from "./components/Listings";
 import SingleListing from"./components/SingleListing"
+import ProfilePage from "./components/ProfilePage"
 import * as listingActions from "./store/listing";
 
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const listings = Object.values(useSelector(state => state.listing))
   useEffect(() => {
     dispatch(listingActions.listed())
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch]);
-  const listings = Object.entries(useSelector(state => state.listing)).map(listing => listing[1])
-  console.log('listings',(listings))
+  }, [dispatch, Listings]);
+
+  const d= new Date(Date.now());
+  console.log(d)
+
+
 
   // {listings.forEach( listing => <div>{listing[1].name}</div> )}
   // listings.forEach( listing => console.log(listing[1].name) )
@@ -65,8 +70,15 @@ function App() {
                     </div>
                   </div>
                 </div>
-                
-                  <Listings listings={listings}/>
+                <div className="btn-group">
+                  <NavLink to="/listings">
+                    <CatagoryButton/>
+                  </NavLink>
+                  <div className="btn-text">
+                    <p>View All Listings</p>
+                  </div>
+                </div>
+                  {/* <Listings listings={listings}/> */}
                 {/* {listings.map(listing => <div>{listing.name}</div>)} */}
 
               </Route>
@@ -86,7 +98,16 @@ function App() {
               <Route path="/listings/:id">
                 <SingleListing/>
               </Route>
+              <Route path="/submission">
+                <h2>Your Studio is under Review</h2>
+                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+              </Route>
+              <Route path="/user/:id">
+                <ProfilePage/>
+                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+              </Route>
             </Switch>
+            {}
         </div>
         <div className="sidebar"></div>
       </div>

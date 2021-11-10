@@ -9,8 +9,8 @@ function ListingDeletePrompt({listing}){
   const history =useHistory()
   const dispatch = useDispatch();
   const handleDelete = () =>{
-    dispatch(listingActions.unlisted(listing.id)).then(() => <Redirect to="/"/>)
-   
+    dispatch(listingActions.unlisted(listing.id))
+    history.push("/listings")
   }
 
   return (

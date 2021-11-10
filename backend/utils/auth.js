@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { jwtConfig } = require('../config');
-const { User } = require('../db/models');
+const { User,Listing,Booking,Review } = require('../db/models');
 
 const { secret, expiresIn } = jwtConfig;
 
@@ -36,7 +36,9 @@ const restoreUser = (req, res, next) => {
       try {
         console.log(jwtPayload)
         const { id } = jwtPayload.data;
-        req.user = await User.scope('currentUser').findByPk(id);
+        req.user = await User.scope('currentUser').findByPk(id,{
+          include:[{model:Listing},{model:Booking},{model:Review}]
+        });
       } catch (e) {
         res.clearCookie('token');
         return next();
