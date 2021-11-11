@@ -1,16 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
+import * as sessionActions from '../../store/session'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-
+  const dispatch = useDispatch();
   let sessionLinks;
   let producerButton;
+  const handleDemo =() =>{
+    dispatch(sessionActions.login({ credential:"Demo", password:"password" }))
+  }
   if (sessionUser) {
     producerButton =(
     <NavLink to ="/listingpost">
@@ -31,7 +35,7 @@ function Navigation({ isLoaded }){
         <div className="nav-btns">
           <LoginFormModal />
           <SignUpFormModal/>
-          <div></div>
+          <button onClick={handleDemo}>Demo</button>
         </div>
     );
   }

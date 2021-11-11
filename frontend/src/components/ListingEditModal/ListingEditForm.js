@@ -45,23 +45,26 @@ function ListingEditForm({listing}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    
-    dispatch(listingActions.updateListing({
-        id:listing.id,
-        userId:sessionUser.id,
-        city,
-        address,
-        state,
-        country,
-        catagoryId:catagory,
-        name,
-        price,
-        description,
-    }))
+
+    dispatch(listingActions.updateListing(
+        {
+            id:listing.id,
+            userId:sessionUser.id,
+            city,
+            address,
+            state,
+            country,
+            catagoryId:catagory,
+            name,
+            price,
+            description,
+        }
+    ))
         .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-    }).then(() => <Redirect to="/"/>)
+    })
+
     history.push("/submission")
   }
 

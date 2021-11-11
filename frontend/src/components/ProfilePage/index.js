@@ -15,13 +15,33 @@ function ProfilePage(){
     const history = useHistory();
     const listing = useSelector(state=>state.listing)
     const sessionUser = useSelector(state=>state.session.user)
-    const listings = sessionUser.Bookings.map(booking=> booking.listingId)
-    const listingNames = listings.map(list =>listing[list])
-    const namesOfBookings = listingNames.map(li => li.name)
+    const listings = sessionUser?.Bookings.map(booking=> booking.listingId)
+    const listingNames = listings?.map(list =>listing[list])
+
+    if(!sessionUser){
+        history.push("/")
+    }
+
+    const namesOfBookings = listingNames?.map((li,idx) =>{
+       return(
+        <div key={idx} className="bookings-card">
+            <div className="bookings-title">{li?.name}</div>
+            <div className="bookings-wrapper">
+
+                <div>Start Date: {sessionUser.Bookings[idx].startTime.split("T")[0]}</div>
+                <div>Start Time: {sessionUser.Bookings[idx].startTime.split("T")[1]}</div>
+                <div>End Date: {sessionUser.Bookings[idx].endTime.split("T")[0]}</div>
+                <div>End Time: {sessionUser.Bookings[idx].endTime.split("T")[1]}</div>
+                <button>cancel</button>
+                </div>
+            </div>
+        )}
+
+    )
 
     return(
         <div className ="listings-wrapper">
-            <h2>{sessionUser.username}</h2>
+            <h2>{sessionUser?.username}</h2>
 
             {namesOfBookings}
             {/* {sessionUser.Bookings.map(booking=> booking.listingId)} */}

@@ -46,7 +46,7 @@ export const lister = listing => async (dispatch) => {
         price,
         description
     } = listing;
-    
+
     const response = await csrfFetch("/api/listings", {
       method: "POST",
       body: JSON.stringify({
@@ -107,7 +107,7 @@ export const updateListing = (listing) => async dispatch =>{
       description
     }),
   })
-  const data = res.json()
+  const data = await res.json()
   dispatch(updateList(data))
   return res
 }

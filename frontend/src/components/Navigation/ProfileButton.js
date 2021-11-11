@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import{NavLink} from 'react-router-dom'
 import * as sessionActions from '../../store/session';
 import "./Navigation.css"
 
@@ -27,6 +28,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+
   };
 
   return (
@@ -41,7 +43,7 @@ function ProfileButton({ user }) {
           <details-menu class="profile-dropdown">
             <div>
               <p className="profile-info">{user.username}</p>
-              <p className="profile-info">{user.email}</p>
+              <NavLink to="/profile" className="profile-info">Profile</NavLink>
             </div>
             <button
               className="logout-btn"
