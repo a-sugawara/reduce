@@ -27,7 +27,7 @@ router.post(
 
     const check = await User.login({ credential, password });
 
-
+    console.log(check)
     if (!check) {
       const err = new Error('Login failed');
       err.status = 401;
@@ -35,12 +35,12 @@ router.post(
       err.errors = ['The provided credentials were invalid.'];
       return next(err);
     }
-    const user = await User.findByPk(check.id,{
+    const user = await User.scope('currentUser').findByPk(check.id,{
       include:[{model:Listing},{model:Booking},{model:Review},]
     })
 
     await setTokenCookie(res, user);
-
+    // console.log(user)
     return res.json({
       user,
     });
@@ -60,6 +60,7 @@ router.get(
     restoreUser,
     (req, res) => {
       const { user } = req;
+      const authUser = User.findByPk()
       if (user) {
         return res.json({
           user

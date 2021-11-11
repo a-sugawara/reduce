@@ -21,8 +21,11 @@ function SingleListing(){
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(3);
 
+
+
+
     const handleBooking= () =>{
-       
+
         dispatch(book({
             userId: sessionUser.id,
             listingId:id,
@@ -51,7 +54,8 @@ function SingleListing(){
                 if(sessionUser?.id === review.userId){
                 return  <div>
                             <p key={idx}>{review.review}</p>
-                            <button>delete</button>
+                            <button >delete</button>
+                            <button >edit</button>
                         </div>
                 }else{
                     return  <div>

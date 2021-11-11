@@ -10,6 +10,14 @@
     font-size: 1.5rem;
     font-weight: 700;
 }
+.bookings-shelf{
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+}
+.bookings-text{
+ width: 12rem;
+}
 .bookings-card{
     display: flex;
     justify-content:center;
@@ -18,7 +26,12 @@
     border-radius: 40px;
     box-shadow: 0 0 10px black;
     margin: 1.5rem;
+    width:40rem;
     gap:2.5rem;
     background-color: #595959;
     color: white;
+}
+
+.bookings-card:hover{
+    transform: scale(1.01) translateY(-8px);
 }

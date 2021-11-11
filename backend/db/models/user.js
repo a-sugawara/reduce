@@ -67,7 +67,12 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
     if (user && user.validatePassword(password)) {
-      return await User.scope('currentUser').findByPk(user.id);
+      // console.log(user)
+
+      const logged=  await User.scope('currentUser').findByPk(user.id)
+      // console.log(logged)
+      return logged
+
     }
   };
   User.signup = async function ({ username, email, password }) {
