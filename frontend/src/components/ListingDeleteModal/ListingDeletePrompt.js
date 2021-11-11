@@ -8,8 +8,8 @@ import { Redirect, useHistory } from 'react-router-dom';
 function ListingDeletePrompt({listing}){
   const history =useHistory()
   const dispatch = useDispatch();
-  const handleDelete = () =>{
-    dispatch(listingActions.unlisted(listing.id))
+  const handleDelete = async () =>{
+    await dispatch(listingActions.unlisted(listing.id))
     history.push("/listings")
   }
 
