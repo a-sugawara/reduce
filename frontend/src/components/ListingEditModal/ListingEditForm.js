@@ -10,16 +10,16 @@ function ListingEditForm({listing}) {
   const sessionUser = useSelector(state => state.session.user);
 
 
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setSt] = useState('');
-  const [country, setCountry] = useState('');
-  const [catagory, setCatagory] = useState(3);
-  const [description, setDescription] = useState('');
+  const [address, setAddress] = useState(listing.address);
+  const [city, setCity] = useState(listing.city);
+  const [state, setSt] = useState(listing.state);
+  const [country, setCountry] = useState(listing.country);
+  const [catagory, setCatagory] = useState(+listing.catagory);
+  const [description, setDescription] = useState(listing.description);
 //   const [lat, setLat] = useState('');
 //   const [lng, setLng] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
+  const [name, setName] = useState(listing.name);
+  const [price, setPrice] = useState(listing.price);
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
@@ -65,7 +65,7 @@ function ListingEditForm({listing}) {
         if (data && data.errors) setErrors(data.errors);
     })
 
-    history.push("/submission")
+    // history.push("/submission")
   }
 
 

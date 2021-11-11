@@ -65,7 +65,7 @@ function ProfilePage(){
     const lister = sessionUser.Listings?.map((listing,idx) => {
         return  <div key={idx} className="lister-card">
             <div className="bookings-title" >{listing.name}</div>
-           <div className="review-wrapper">
+           <div className="listings-wrapper">
 
             <div>${listing.price}{"/Hour"}</div>
             {/* <div>{sessionUser.Reviews[idx].rating} Stars</div> */}

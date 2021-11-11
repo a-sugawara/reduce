@@ -45,10 +45,12 @@
 .listing-card:hover{
     transform:scale(1.10);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.465);
+    cursor: pointer;
 }
 .listing-card-d:hover{
     transform:scale(1.10);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.465);
+    cursor: pointer;
 }
 .listings{
     display: flex;

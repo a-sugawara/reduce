@@ -58,5 +58,7 @@
 .review{
     display: flex;
     width: 50%;
-    background-color: aqua;
+    margin: 1rem;
+    border-bottom: 1px solid grey;
+
 }

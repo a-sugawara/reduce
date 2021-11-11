@@ -108,8 +108,9 @@ export const updateListing = (listing) => async dispatch =>{
     }),
   })
   const data = await res.json()
-  dispatch(updateList(data))
-  return res
+  console.log(data.updated,"XXXXXXXXX")
+  dispatch(updateList(data.updated))
+  return data
 }
 
 const initialState = {};
@@ -134,8 +135,15 @@ switch (action.type) {
       return newState;
     case UPDATE_LIST:
       newState = Object.assign({}, state); //newstate= {..state}
-      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
-      newState[action.data.id] = action.payload;
+      newState[action.data.id].address = action.data.address;
+      newState[action.data.id].city = action.data.city;
+      newState[action.data.id].state = action.data.state;
+      newState[action.data.id].country = action.data.country;
+      newState[action.data.id].name = action.data.name;
+      newState[action.data.id].price = action.data.price;
+      newState[action.data.id].description = action.data.description;
+      newState[action.data.id].catagory = action.data.catagory;
+
       return newState;
     default:
       return state;
