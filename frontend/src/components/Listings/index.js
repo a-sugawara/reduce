@@ -17,7 +17,8 @@ function Listings() {
     useEffect(() => {
         dispatch(listingActions.listed()).then(() => setIsLoaded(true))
     }, [dispatch]);
-    let listings = Object.values(useSelector(state => state.listing))
+    let lister = useSelector(state => state.listing)
+    let listings = Object.values(lister)
 
 
 
