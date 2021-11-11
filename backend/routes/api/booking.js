@@ -63,7 +63,7 @@ router.delete('/:pk',asyncHandler(async(req,res)=>{
   const {pk} = req.params
   const booking= await Booking.findByPk(pk)
   await booking.destroy()
-  res.json({message:"deleted"})
+  res.json({id:pk})
 
 }))
 

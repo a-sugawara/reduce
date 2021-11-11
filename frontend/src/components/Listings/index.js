@@ -25,12 +25,12 @@ function Listings() {
 
     return isLoaded &&(
         <div className="listings">
-            {listings.map(listing =>{
+            {listings.map((listing, idx) =>{
                 if(listing){
                     if(listing.Images){
                         if(listing.Images[0]){
                             return (
-                                <NavLink to={`/listings/${listing.id}`}>
+                                <NavLink to={`/listings/${listing.id}`} key={idx}>
                                     <div className="listing-card">
                                         <div>
                                             <img className="listing-card-img" src={listing.Images[0].url}/>
@@ -51,7 +51,7 @@ function Listings() {
                             )
                         }else{
                             return(
-                                <NavLink to={`/listings/${listing.id}`}>
+                                <NavLink to={`/listings/${listing.id}`}key={idx}>
                                     <div className="listing-card-d">
                                         <div>
                                             <img className="listing-card-dimg" src={"https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"}/>

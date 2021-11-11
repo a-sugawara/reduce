@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(listingActions.listed())
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch, Listings]);
+  }, [dispatch, Listings,ProfilePage]);
 
 
 
@@ -108,6 +108,10 @@ function App() {
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
               </Route>
               <Route path="/profile">
+                <ProfilePage/>
+                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+              </Route>
+              <Route path="/cancel/:id">
                 <ProfilePage/>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
               </Route>
