@@ -53,4 +53,10 @@
     height:auto;
     border-radius: 20px;
 
+
+}
+.review{
+    display: flex;
+    width: 50%;
+    background-color: aqua;
 }

@@ -19,16 +19,19 @@ function ProfilePage(){
     const sessionUser = useSelector(state=>state.session.user)
     const listings = sessionUser?.Bookings.map(booking=> booking.listingId)
     const listingNames = listings?.map(list =>listing[list])
+    const reviews = sessionUser?.Reviews?.map(review=> review)
+    const reviewNames = reviews?.map(review => listing[review.listingId])
 
-    if(!sessionUser){
-        history.push("/")
-    }
+
     useEffect(()=>{
         dispatch(restoreUser())
     },[booking])
 
+    if(!sessionUser){
+        return <Redirect to="/" />
+    }
     const handleBookingDelete = (id) => {
-        console.log(id,"XXXXXXXXXXXXXX")
+
         dispatch(unbook(id))
     }
 
@@ -48,12 +51,46 @@ function ProfilePage(){
         )}
 
     )
+    const reviewCards = reviewNames?.map((rev,idx)=>{
+      return  <div key={idx} className="review-card">
+            <div className="bookings-title" >{rev.name}</div>
+           <div className="review-wrapper">
+
+            <div>{sessionUser.Reviews[idx].review}</div>
+            <div>{sessionUser.Reviews[idx].rating} Stars</div>
+            </div>
+        </div>
+    })
+
+    const lister = sessionUser.Listings?.map((listing,idx) => {
+        return  <div key={idx} className="lister-card">
+            <div className="bookings-title" >{listing.name}</div>
+           <div className="review-wrapper">
+
+            <div>${listing.price}{"/Hour"}</div>
+            {/* <div>{sessionUser.Reviews[idx].rating} Stars</div> */}
+            </div>
+        </div>
+    })
+    console.log(lister)
+
 
     return(
         <div className ="listings-wrapper">
-            <h2>{sessionUser?.username}</h2>
+            <h1>{sessionUser?.username}</h1>
+            <h2>Bookings</h2>
             <div className="bookings-shelf">
+
                 {namesOfBookings}
+            </div>
+            <h2>Reviews</h2>
+            <div className="bookings-shelf">
+
+                {reviewCards}
+            </div>
+                <h2>Listings</h2>
+            <div className="bookings-shelf">
+                {lister}
             </div>
             {/* {sessionUser.Bookings.map(booking=> booking.listingId)} */}
         </div>

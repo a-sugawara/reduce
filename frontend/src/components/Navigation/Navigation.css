@@ -19,4 +19,11 @@
 }
 .profile-info{
     border-bottom: 1px solid rgba(128, 128, 128, 0.198);
+    margin-bottom: 1rem;
+
+}
+.profile-link{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.198);
+    margin-bottom: 1rem;
+
 }

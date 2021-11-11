@@ -35,7 +35,11 @@
     width: auto;
 }
 .listing-card-info{
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    gap: 0.25rem;
 }
 
 .listing-card:hover{
@@ -52,4 +56,8 @@
     width:100%;
     flex-wrap: wrap;
 
+}
+.listing-card-name{
+    font-size: 1.5rem;
+    font-weight: bold;
 }

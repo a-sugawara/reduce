@@ -12,6 +12,8 @@ import Listings from "./components/Listings";
 import SingleListing from"./components/SingleListing"
 import ProfilePage from "./components/ProfilePage"
 import * as listingActions from "./store/listing";
+import BubbleDivs from "./components/BubbleDivs"
+
 
 
 function App() {
@@ -77,43 +79,67 @@ function App() {
                 </div>
                   {/* <Listings listings={listings}/> */}
                 {/* {listings.map(listing => <div>{listing.name}</div>)} */}
-
+              <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
+              {/* <BubbleDivs color1={"orange"} color3={"white"} side={"left"} />
+              <BubbleDivs color1={"white"} color2={"orange"} color3={"copper"} side={"right"}/>
+              <BubbleDivs color1={"copper"} color2={"white"} color3={"yellow"} side={"left"}/>
+              <BubbleDivs color1={"yellow"} color2={"copper"} side={"right"}/> */}
               </Route>
               <Route path="/login">
                 <h1>Login</h1>
                 <LoginFormPage />
+
               </Route>
               <Route path="/signup">
                 <SignupFormPage />
               </Route>
               <Route path="/listingpost">
                 <ListingForm/>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
               <Route exact path="/listings">
                 <Listings/>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
               <Route path="/listings/:id">
                 <SingleListing/>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
               <Route path="/submission">
                 <h2>Your Studio is under Review</h2>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
               <Route path="/booked">
                 <h2>Nice! You're Booked! We've sent you an email</h2>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
               <Route path="/reviewed">
                 <h2>Thank you! Your feedback is very important to us! </h2>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
               <Route path="/profile">
                 <ProfilePage/>
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
-              </Route>
-              <Route path="/cancel/:id">
-                <ProfilePage/>
-                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"}/>
+              <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
               </Route>
             </Switch>
             {}

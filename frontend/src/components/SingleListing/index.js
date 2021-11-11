@@ -52,13 +52,13 @@ function SingleListing(){
         if (listing.Reviews){
             reviews = listing.Reviews.map((review,idx)=>{
                 if(sessionUser?.id === review.userId){
-                return  <div>
+                return  <div className="review">
                             <p key={idx}>{review.review}</p>
                             <button >delete</button>
                             <button >edit</button>
                         </div>
                 }else{
-                    return  <div>
+                    return  <div className="review">
                                 <p key={idx}>{review.review}</p>
                             </div>
                 }
@@ -68,7 +68,7 @@ function SingleListing(){
 
     }
 
-    let h2s = [<h2>1</h2>,<h2>1</h2>,<h2>1</h2>,<h2>1</h2>,]
+    
     let photo1
     let photo2
     let photo3
