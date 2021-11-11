@@ -53,4 +53,12 @@
     height:auto;
     border-radius: 20px;
 
+
+}
+.review{
+    display: flex;
+    width: 50%;
+    margin: 1rem;
+    border-bottom: 1px solid grey;
+
 }

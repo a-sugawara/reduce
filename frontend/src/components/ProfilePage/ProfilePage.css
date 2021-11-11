@@ -6,13 +6,32 @@
     padding-left: 1rem;
 
 }
+.review-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid #595959;
+    padding-top: 1rem;
+    min-height: 6rem;
+    min-width: 15rem;
+
+}
+.listings-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid #595959;
+    padding-left: 1rem;
+    min-height: 6rem;
+
+}
 .bookings-title{
     font-size: 1.5rem;
     font-weight: 700;
 }
 .bookings-shelf{
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
   width: 100%;
 }
 .bookings-text{
@@ -26,12 +45,55 @@
     border-radius: 40px;
     box-shadow: 0 0 10px black;
     margin: 1.5rem;
-    width:40rem;
+    min-width:25rem;
+    width:fit-content;
+
+    min-height: 8rem;
     gap:2.5rem;
     background-color: #595959;
+    color: white;
+}
+.review-card{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    padding:2rem;
+    border-radius: 40px;
+    box-shadow: 0 0 10px black;
+    margin: 1.5rem;
+    width:25rem;
+    min-width:25rem;
+    min-height: 8rem;
+    gap:2.5rem;
+    background-color: #D98F4E;
+    color: white;
+}
+.lister-card{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding:2rem;
+    border-radius: 40px;
+    box-shadow: 0 0 10px black;
+    margin: 1.5rem;
+    width:25rem;
+    min-width:25rem;
+    min-height: 8rem;
+    gap:2.5rem;
+    background-color:#BF6341;
     color: white;
 }
 
 .bookings-card:hover{
     transform: scale(1.01) translateY(-8px);
+    cursor: pointer;
+}
+.lister-card:hover{
+    transform: scale(1.01) translateY(-8px);
+    cursor: pointer;
+}
+.review-card:hover{
+    transform: scale(1.01) translateY(-8px);
+    cursor: pointer;
 }

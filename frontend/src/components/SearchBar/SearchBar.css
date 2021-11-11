@@ -13,22 +13,26 @@
     box-shadow: 0 10px 5px rgba(0, 0, 0, 0.431)
 }
 .sentence{
+    position: relative;
+    top: -20rem;
     display: flex;
     align-items: center;
-    color: rgb(255, 255, 255);
+    color: white;
     font-size:7rem;
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
 
 }
 .orange{
     color: orange;
 }
 .search-bar{
+    position: relative;
+    top: -10rem;
     display: flex;
     justify-content:center;
     width: 100%;
     height:4rem;
-    margin-top: 35rem;
+    /* margin-top: 5rem; */
 }
 .search-icon{
     height:100%;

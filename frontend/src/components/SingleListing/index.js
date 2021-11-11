@@ -52,13 +52,13 @@ function SingleListing(){
         if (listing.Reviews){
             reviews = listing.Reviews.map((review,idx)=>{
                 if(sessionUser?.id === review.userId){
-                return  <div>
+                return  <div className="review">
                             <p key={idx}>{review.review}</p>
                             <button >delete</button>
                             <button >edit</button>
                         </div>
                 }else{
-                    return  <div>
+                    return  <div className="review">
                                 <p key={idx}>{review.review}</p>
                             </div>
                 }
@@ -68,30 +68,32 @@ function SingleListing(){
 
     }
 
-    let h2s = [<h2>1</h2>,<h2>1</h2>,<h2>1</h2>,<h2>1</h2>,]
+
     let photo1
     let photo2
     let photo3
     let photo4
-    if(listing.Images[0]){
-        photo1 = listing.Images[0].url
-    }else{
-        photo1 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
-    }
-    if(listing.Images[1]){
-        photo2 = listing.Images[1].url
-    }else{
-        photo2 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
-    }
-    if(listing.Images[2]){
-        photo3 = listing.Images[2].url
-    }else{
-        photo3 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
-    }
-    if(listing.Images[3]){
-        photo4 = listing.Images[3].url
-    }else{
-        photo4 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
+    if(listing?.Images){
+        if(listing.Images[0]){
+            photo1 = listing.Images[0].url
+        }else{
+            photo1 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
+        }
+        if(listing.Images[1]){
+            photo2 = listing.Images[1].url
+        }else{
+            photo2 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
+        }
+        if(listing.Images[2]){
+            photo3 = listing.Images[2].url
+        }else{
+            photo3 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
+        }
+        if(listing.Images[3]){
+            photo4 = listing.Images[3].url
+        }else{
+            photo4 = "https://cdn.discordapp.com/attachments/906471684683493386/906471724965593119/AirTimeLogo.png"
+        }
     }
 
 

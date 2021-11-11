@@ -1,14 +1,15 @@
 .cat-btn{
-    width:6rem;
-    height:6rem;
+    width:9rem;
+    height:9rem;
 }
 .icon{
-    height:6rem;
-    width: 6rem;
+    height:9rem;
+    width: 9rem;
     transition: all 0.3s ease;
 }
 .icon:hover{
     /* filter: drop-shadow(0px 0px 2px orange); */
-    transform: scale(1.09) translateX(2px);
+    transform: scale(1.09) translateY(2px);
+    cursor: pointer;
 
 }

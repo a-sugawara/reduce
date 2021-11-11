@@ -35,15 +35,16 @@ function Listings() {
                                         <div>
                                             <img className="listing-card-img" src={listing.Images[0].url}/>
                                         </div>
-                                        <div className="listing-card-info">
                                             <div className="listing-card-name" >
                                                 {listing.name}
                                             </div>
+                                        <div className="listing-card-info">
                                             <div className="listing-card-price" >
-                                                {listing.price}
+                                                {"Price: $"}{listing.price}{"/Hour"}
                                             </div>
                                             <div className="listing-card-city" >
-                                                {listing.city}
+                                                {"Location: "}{listing.city}{", "}
+                                                {listing.state}
                                             </div>
                                         </div>
                                     </div>
@@ -61,10 +62,11 @@ function Listings() {
                                                 {listing.name}
                                             </div>
                                             <div className="listing-card-price" >
-                                                {listing.price}
+                                                {"Price: $"}{listing.price}{"/Hour"}
                                             </div>
                                             <div className="listing-card-city" >
-                                                {listing.city}
+                                                {"Location: "}{listing.city}{", "}
+                                                {listing.state}
                                             </div>
                                         </div>
                                     </div>

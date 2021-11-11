@@ -23,10 +23,13 @@ const SearchBar = () =>{
         return ()=>{clearInterval(time)}
     },[])
 
-    
+
 
     return (
         <div className="imagebar set">
+            <div className="sentence">
+                <p>Find your&nbsp;<span className="orange">{words[wordidx]}</span>&nbsp;studio</p>
+            </div>
             <div className="search-bar">
                 <form className="search-form">
                 <img className="search-icon"
@@ -34,9 +37,6 @@ const SearchBar = () =>{
                     <input type="search" className="search-input">
                     </input>
                 </form>
-            </div>
-            <div className="sentence">
-                <p>Find your&nbsp;<span className="orange">{words[wordidx]}</span>&nbsp;studio</p>
             </div>
         </div>
     )
