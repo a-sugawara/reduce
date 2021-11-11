@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 // import './ListingForm.css';
 
-function ListingEditForm({listing}) {
+function ListingEditForm({listing, onClose}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
@@ -64,7 +64,7 @@ function ListingEditForm({listing}) {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
     })
-
+    onClose()
     // history.push("/submission")
   }
 

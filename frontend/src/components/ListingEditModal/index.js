@@ -10,7 +10,7 @@ function ListingEditModal({listing}) {
       <button className="nav-btn" onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ListingEditForm listing={listing} />
+          <ListingEditForm listing={listing} onClose={() => setShowModal(false)} />
         </Modal>
       )}
     </>

@@ -6,11 +6,10 @@ const DELETE_LIST = 'listing/delete'
 const UPDATE_LIST = 'listing/update'
 
 
-
 const postListing = (listing) => {
     return {
       type: POST_LIST,
-      payload: listing,
+      listing,
     };
 };
 
@@ -62,8 +61,9 @@ export const lister = listing => async (dispatch) => {
       }),
     });
     const data = await response.json();
+    console.log(data);
     dispatch(postListing(data.listing));
-    return response;
+    return data;
 };
 
 export const listed = () => async (dispatch) => {
@@ -126,8 +126,7 @@ switch (action.type) {
     return newState;
     case POST_LIST:
       newState = Object.assign({}, state); //newstate= {..state}
-      //newstate = {1:{id:1,userId:1,title:'how do i center a div?'}}
-      newState[action.payload.id] = action.payload;
+      newState[action.listing.id] = action.listing;
       return newState;
     case DELETE_LIST:
       newState = Object.assign({}, state);

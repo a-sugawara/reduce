@@ -43,7 +43,7 @@ function ListingForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    
+
     dispatch(listingActions.lister({
         userId:sessionUser.id,
         city,
@@ -59,8 +59,9 @@ function ListingForm() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
     });
+    dispatch(listingActions.listed())
 
-    history.push("/submission")
+    history.push("/listings")
 
   }
 
