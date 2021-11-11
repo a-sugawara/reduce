@@ -59,9 +59,10 @@ function ListingForm() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
     });
-    dispatch(listingActions.listed())
 
-    history.push("/listings")
+    dispatch(listingActions.listed()).then(() => {history.push("/listings")})
+
+
 
   }
 
