@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import CatagoryButton from "./components/CatagoryButton";
 import ListingForm from "./components/ListingForm";
 import Listings from "./components/Listings";
+import CatagoryListings from "./components/CatagoryListings";
 import SingleListing from"./components/SingleListing"
 import ProfilePage from "./components/ProfilePage"
 import * as listingActions from "./store/listing";
@@ -143,6 +144,14 @@ function App() {
               <Route path="/profile">
                 <BubbleDivs color1={"grey"} color2={"white"} color3={"white"} side={"left"} size={"thin"}/>
                 <ProfilePage/>
+                <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
+                <BubbleDivs color1={"white"} color3={"copper"} side={"right"} size={"thin"}/>
+                <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>
+                <BubbleDivs color1={"black"} color2 = {"copper"} color3={"black"} side={"right"}  size={"thin"}/>
+              </Route>
+              <Route path="/catagory/:catId">
+                <BubbleDivs color1={"grey"} color2={"white"} color3={"white"} side={"left"} size={"thin"}/>
+                <CatagoryListings />
                 <NavLink to="/listings/"><h2>Check Back To Listings</h2></NavLink>
                 <BubbleDivs color1={"white"} color3={"copper"} side={"right"} size={"thin"}/>
                 <BubbleDivs color1={"copper"} color3={"black"} side={"left"}  size={"thin"}/>

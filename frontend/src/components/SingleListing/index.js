@@ -45,7 +45,7 @@ function SingleListing(){
             review,
             rating
         }))
-        // history.push("/reviewed")
+        setReview("")
     }
 
     let reviews
@@ -132,6 +132,7 @@ function SingleListing(){
                                 onChange={e=> setSTime(e.target.value)}
                                 pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required
                                 className="booking-input"
+                                required
                                 />
                             <input
                                 type="datetime-local"
@@ -140,6 +141,7 @@ function SingleListing(){
                                 onChange={e=> setETime(e.target.value)}
                                 pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required
                                 className="booking-input"
+                                required
                             />
                             <button className="booking-button">Book now</button>
                         </div>
@@ -156,21 +158,28 @@ function SingleListing(){
 
 
             ReviewForm =
-                <form onSubmit={handleReview}>
-                    <input
-                        type="text"
+                <form className="review-form" onSubmit={handleReview}>
+                    <textarea
+                        className="review-input"
+                        type="textarea"
                         value={review}
                         onChange={e=> setReview(e.target.value)}
-                    />
-                    <input
-                        type="number"
-                        min={1}
-                        max={5}
-                        value={rating}
-                        onChange={e=> setRating(e.target.value)}
-                    />
+                        required
+                        />
+                    <div>
+                    Rating:&nbsp;&nbsp;&nbsp;
+                        <input
+                            className="rating"
+                            type="number"
+                            min={1}
+                            max={5}
+                            value={rating}
+                            onChange={e=> setRating(e.target.value)}
+                            required
+                        />
+                    </div>
 
-                    <button>Leave a review</button>
+                    <button class="nav-btn">Post</button>
                 </form>
         }
     }
