@@ -14,23 +14,23 @@ function CatagoryListings() {
     // if(!sessionUser){
     //     <Redirect to="/" />
     // }
-
+    console.log(catId)
     useEffect(() => {
         dispatch(listingActions.listed()).then(() => setIsLoaded(true))
         console.log(catId)
     }, [dispatch]);
     let lister = useSelector(state => state.listing)
-    let listings = Object.values(lister)
+    let listings = Object.values(lister).filter(listing => listing.catagoryId === +catId)
 
 
-    //
+    //.filter(listing => listing.catagoryId=== 2)
 
 
     return isLoaded &&(
         <div className="listings">
-            {listings.filter(listing => listing.catagoryId=== catId).map((listing, idx) =>{
+            {listings.map((listing, idx) =>{
                 if(listing){
-                    if(listing?.Images){
+                    if(listing.Images){
                         if(listing.Images[0]){
                             return (
                                 <NavLink to={`/listings/${listing.id}`} key={idx}>

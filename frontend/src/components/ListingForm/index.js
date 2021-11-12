@@ -26,6 +26,7 @@ function ListingForm() {
     },[])
 
   const catagories = useSelector(state => state.catagory.catagories);
+  
   const validate = () =>{
     const errors =[]
     if(price > 10000) errors.push("Cost Cannot exceed $10000")
@@ -63,7 +64,7 @@ function ListingForm() {
         price,
         description,
     }))
-        
+
 
     dispatch(listingActions.listed()).then(() => {history.push("/listings")})
 
