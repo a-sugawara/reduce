@@ -37,28 +37,32 @@ function SingleListing(){
         }))
         history.push("/booked")
     }
-    const handleReview= () =>{
+    const handleReview= (e) =>{
+        e.preventDefault()
         dispatch(reviewer({
             userId: sessionUser.id,
             listingId:id,
             review,
             rating
         }))
-        history.push("/reviewed")
+        // history.push("/reviewed")
     }
 
     let reviews
 
-    if(!listing){
-        return <Redirect to="/" />
-    }else{
-        if (listing.Reviews){
+    // if(!listing){
+    //     return <Redirect to="/" />
+    // }else{
+        if (listing?.Reviews){
             reviews = listing.Reviews.map((review,idx)=>{
                 if(sessionUser?.id === review.userId){
 
                 return  <div key={idx} className="review">
-                            {review.User.username}
+                            {review.User?review.User.username : sessionUser.username}
                             <p>{review.review}</p>
+                            <div className="bar-holder">
+                                <div className={`star${review.rating}`} ></div>
+                            </div>
                             <ReviewEditModal reviewId={review.id}/>
                             <ReviewDeleteModal reviewId={review.id}/>
 
@@ -73,7 +77,7 @@ function SingleListing(){
                             </div>
                 }
             })
-        }
+        // }
 
 
     }
@@ -110,7 +114,7 @@ function SingleListing(){
     let ReviewForm = null
     let buttons = null
     if(sessionUser){
-        if(sessionUser.id === listing.userId){
+        if(sessionUser.id === listing?.userId){
             buttons =
                 <div>
                     <ListingEditModal listing={listing}/>
@@ -141,11 +145,11 @@ function SingleListing(){
                         </div>
                         <div className="booking-info">
                             <div className="booking-price">
-                                ${listing.price}/Hour
+                                ${listing?.price}/Hour
                             </div>
                             <div className="booking-info2">
-                                <div>{listing.description}</div>
-                                <div>{listing.User.username}</div>
+                                <div>{listing?.description}</div>
+                                <div>{listing?.User.username}</div>
                             </div>
                         </div>
                     </form>
@@ -171,12 +175,12 @@ function SingleListing(){
         }
     }
 
-    return(
+    return (
         <div className ="listings-wrapper">
             <div className ="sidebar2"></div>
             <div className ="mainbar2">
-                <h1>{listing.name}</h1>
-                <h2>{listing.city}</h2>
+                <h1>{listing?.name}</h1>
+                <h2>{listing?.city}</h2>
                 <div className ="photosbox">
                     <img alt="photo1" className="photo1" src={photo1}/>
                     <div className="three-photo-box">
@@ -191,7 +195,8 @@ function SingleListing(){
                 </div>
                 {buttons}
                 <div>
-                    <div>{listing.description}</div>
+                        {ReviewForm}
+                    <div>{listing?.description}</div>
                 </div>
                 {reviews}
             </div>

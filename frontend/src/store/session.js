@@ -2,6 +2,13 @@ import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const UNBOOK = "/booking/delete"
+const ADD_BOOKING = "/booking/post"
+const UPDATE_LIST = 'listing/update'
+const POST_LIST = 'listing/postListing'
+const DELETE_LIST = 'listing/delete'
+const POST_REVIEW = 'review/postListing'
+const DELETE_REVIEW = 'review/delete'
 
 const setUser = (user) => {
   return {
@@ -26,7 +33,7 @@ export const login = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  
+
   dispatch(setUser(data.user));
   return response;
 };
@@ -72,6 +79,43 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.user = action.payload;
       return newState;
+    case POST_LIST:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      newState.user.Listings = newState.user.Listings.concat(action.listing)
+      return newState;
+    case POST_REVIEW:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      newState.user.Reviews = newState.user.Reviews.concat(action.review)
+      return newState;
+    case ADD_BOOKING:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      newState.user.Bookings.push(action.booking)
+      newState.user.Bookings = newState.user.Bookings.slice()
+      return newState;
+    case UNBOOK:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      const idx = newState.user.Bookings.findIndex(Booking => Booking.id ===action.booking.id)
+      newState.user.Bookings.splice(idx, 1);
+      newState.user.Bookings = newState.user.Bookings.slice()
+      return newState
+    case DELETE_LIST:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      const listingIdx = newState.user.Listings.findIndex(listing => listing.id ===action.id)
+      newState.user.Listings.splice(listingIdx, 1);
+      newState.user.Listings = newState.user.Listings.slice()
+      return newState
+    case DELETE_REVIEW:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      const reviewIdx = newState.user.Reviews.findIndex(listing => listing.id ===action.id)
+      newState.user.Reviews.splice(reviewIdx, 1);
+      newState.user.Reviews = newState.user.Reviews.slice()
+      return newState
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;

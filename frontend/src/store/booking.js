@@ -52,14 +52,14 @@ export const book = listing => async (dispatch) => {
 const bookingReducer = (state = { switch:false }, action, ) => {
     let newState;
     switch (action.type) {
-        case BOOK:
-        newState = Object.assign({}, state);
-        newState[action.booking.id]=action.booking
-        return newState;
-        case UNBOOK:
-        newState = Object.assign({}, state);
-        newState.switch = !newState.switch
-        return newState
+        // case BOOK:
+        // newState = Object.assign({}, state);
+        // newState[action.booking.id]=action.booking
+        // return newState;
+        // case UNBOOK:
+        // newState = Object.assign({}, state);
+        // newState.switch = !newState.switch
+        // return newState
         default:
         return state;
     }

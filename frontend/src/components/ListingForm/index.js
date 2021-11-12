@@ -26,7 +26,13 @@ function ListingForm() {
     },[])
 
   const catagories = useSelector(state => state.catagory.catagories);
-
+  const validate = () =>{
+    const errors =[]
+    if(price > 10000) errors.push("Cost Cannot exceed $10000")
+    if(description.length < 10 )errors.push("description should be descriptive (10 or more characters)")
+    if(state.length < 3) errors.push("Must type full name of state")
+    return errors
+  }
 
 
   if(!sessionUser){
@@ -43,7 +49,9 @@ function ListingForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-
+    const error = validate();
+    setErrors(error)
+    if(error.length > 0)return
     dispatch(listingActions.lister({
         userId:sessionUser.id,
         city,

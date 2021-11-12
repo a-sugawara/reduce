@@ -40,8 +40,8 @@ function App() {
               <Route exact path="/">
               <BubbleDivs color1={"black"} color3={"black"} side={"left"}  size={"thin"}/>
                 <SearchBar/>
-              <BubbleDivs color1={"copper"} color2={"black"} color3={"yellow"} side={"left"}  size={"thin"}/>
-              <BubbleDivs color1={"yellow"} color2={"copper"} color3={"white"} side={"right"}  size={"thin"}/>
+              <BubbleDivs color1={"black"} color2={"black"} color3={"yellow"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"yellow"} color2={"black"} color3={"white"} side={"right"}  size={"thin"}/>
               <BubbleDivs color1={"white"} color2={"yellow"} color3={"white"} side={"left"}  size={"thin"}/>
                 <div className="btn-holder">
                   <div className="btn-group">
