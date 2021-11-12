@@ -37,28 +37,32 @@ function SingleListing(){
         }))
         history.push("/booked")
     }
-    const handleReview= () =>{
+    const handleReview= (e) =>{
+        e.preventDefault()
         dispatch(reviewer({
             userId: sessionUser.id,
             listingId:id,
             review,
             rating
         }))
-        history.push("/reviewed")
+        // history.push("/reviewed")
     }
 
     let reviews
 
-    if(!listing){
-        return <Redirect to="/" />
-    }else{
-        if (listing.Reviews){
+    // if(!listing){
+    //     return <Redirect to="/" />
+    // }else{
+        if (listing?.Reviews){
             reviews = listing.Reviews.map((review,idx)=>{
                 if(sessionUser?.id === review.userId){
 
                 return  <div key={idx} className="review">
-                            {review.User.username}
+                            {review.User?review.User.username : sessionUser.username}
                             <p>{review.review}</p>
+                            <div className="bar-holder">
+                                <div className={`star${review.rating}`} ></div>
+                            </div>
                             <ReviewEditModal reviewId={review.id}/>
                             <ReviewDeleteModal reviewId={review.id}/>
 
@@ -73,7 +77,7 @@ function SingleListing(){
                             </div>
                 }
             })
-        }
+        // }
 
 
     }
@@ -107,10 +111,10 @@ function SingleListing(){
     }
 
 
-
+    let ReviewForm = null
     let buttons = null
     if(sessionUser){
-        if(sessionUser.id === listing.userId){
+        if(sessionUser.id === listing?.userId){
             buttons =
                 <div>
                     <ListingEditModal listing={listing}/>
@@ -118,60 +122,65 @@ function SingleListing(){
                 </div>
         }else{
             buttons =
-                <div>
-                    <form onSubmit={handleBooking}>
-                        <input
-                            type="datetime-local"
-                            // type="date"
-                            value={startTime}
-                            onChange={e=> setSTime(e.target.value)}
-                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required
-                        />
-                        <input
-                            type="datetime-local"
-                            // type="date"
-                            value={endTime}
-                            onChange={e=> setETime(e.target.value)}
-                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required
-                        />
-                        {/* <div>
-                        <label for="party">Choose your preferred party date and time (required, June 1st 8.30am to June 30th 4.30pm):</label>
-                        <input id="party" type="datetime-local" name="partydate"
-                            min="2017-06-01T08:30" max="2017-06-30T16:30"
-                             pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required/>
-                        <span class="validity"></span>
-                        </div> */}
 
-                        <button>Book now</button>
-
-                    </form>
-                    <form onSubmit={handleReview}>
-                        <input
-                            type="text"
-                            value={review}
-                            onChange={e=> setReview(e.target.value)}
-                        />
-                        <input
-                            type="number"
-                            min={1}
-                            max={5}
-                            value={rating}
-                            onChange={e=> setRating(e.target.value)}
-                        />
-
-                        <button>Leave a review</button>
+                    <form onSubmit={handleBooking} className="booking-form">
+                        <div className="booking-input-wrapper">
+                            <input
+                                type="datetime-local"
+                                // type="date"
+                                value={startTime}
+                                onChange={e=> setSTime(e.target.value)}
+                                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required
+                                className="booking-input"
+                                />
+                            <input
+                                type="datetime-local"
+                                // type="date"
+                                value={endTime}
+                                onChange={e=> setETime(e.target.value)}
+                                pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" required
+                                className="booking-input"
+                            />
+                            <button className="booking-button">Book now</button>
+                        </div>
+                        <div className="booking-info">
+                            <div className="booking-price">
+                                ${listing?.price}/Hour
+                            </div>
+                            <div className="booking-info2">
+                                <div>{listing?.description}</div>
+                                <div>{listing?.User.username}</div>
+                            </div>
+                        </div>
                     </form>
 
-                </div>
+
+            ReviewForm =
+                <form onSubmit={handleReview}>
+                    <input
+                        type="text"
+                        value={review}
+                        onChange={e=> setReview(e.target.value)}
+                    />
+                    <input
+                        type="number"
+                        min={1}
+                        max={5}
+                        value={rating}
+                        onChange={e=> setRating(e.target.value)}
+                    />
+
+                    <button>Leave a review</button>
+                </form>
         }
     }
 
-    return(
+    return (
         <div className ="listings-wrapper">
             <div className ="sidebar2"></div>
             <div className ="mainbar2">
-                <h1>{listing.name}</h1>
-                <h2>{listing.city}</h2>
+                <h1>{listing?.name}</h1>
+                <h2>{listing?.city}</h2>
                 <div className ="photosbox">
                     <img alt="photo1" className="photo1" src={photo1}/>
                     <div className="three-photo-box">
@@ -186,7 +195,8 @@ function SingleListing(){
                 </div>
                 {buttons}
                 <div>
-                    <div>{listing.description}</div>
+                        {ReviewForm}
+                    <div>{listing?.description}</div>
                 </div>
                 {reviews}
             </div>

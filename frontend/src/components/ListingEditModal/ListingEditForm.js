@@ -28,7 +28,13 @@ function ListingEditForm({listing, onClose}) {
     dispatch(getCatagories()).then(setCatagory( +listing.catagoryId))
     },[dispatch])
 
-
+    const validate = () =>{
+        const errors =[]
+        if(price > 10000) errors.push("Cost Cannot exceed $10000")
+        if(description.length < 10 )errors.push("description should be descriptive (10 or more characters)")
+        if(state.length < 3) errors.push("Must type full name of state")
+        return errors
+      }
 
 
   if(!sessionUser){
@@ -45,6 +51,10 @@ function ListingEditForm({listing, onClose}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    const errors=validate()
+    setErrors(errors)
+
+    if(errors.length > 0)return
 
     dispatch(listingActions.updateListing(
         {
@@ -60,12 +70,7 @@ function ListingEditForm({listing, onClose}) {
             description,
         }
     ))
-        .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-    })
     onClose()
-    // history.push("/submission")
   }
 
 

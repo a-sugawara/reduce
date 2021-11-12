@@ -4,7 +4,7 @@ const POST_LIST = 'listing/postListing'
 const LOAD_LIST = 'listing/load'
 const DELETE_LIST = 'listing/delete'
 const UPDATE_LIST = 'listing/update'
-
+const POST_REVIEW = 'review/postListing'
 
 const postListing = (listing) => {
     return {
@@ -61,7 +61,7 @@ export const lister = listing => async (dispatch) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data,"OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
     dispatch(postListing(data.listing));
     return data;
 };
@@ -108,7 +108,7 @@ export const updateListing = (listing) => async dispatch =>{
     }),
   })
   const data = await res.json()
-  console.log(data.updated,"XXXXXXXXX")
+  // console.log(data.updated,"XXXXXXXXX")
   dispatch(updateList(data.updated))
   return data
 }
@@ -128,22 +128,29 @@ switch (action.type) {
       newState = Object.assign({}, state); //newstate= {..state}
       newState[action.listing.id] = action.listing;
       return newState;
+    case POST_REVIEW:
+      const {review} = action
+      newState = Object.assign({}, state)
+      newState[review.listingId] = Object.assign({}, newState[review.listingId]); //newstate= {..state}
+      newState[review.listingId].Reviews = newState[review.listingId].Reviews.concat(review)
+      return newState;
     case DELETE_LIST:
       newState = Object.assign({}, state);
       delete newState[action.id]
       return newState;
     case UPDATE_LIST:
       newState = Object.assign({}, state); //newstate= {..state}
-      newState[action.data.id].address = action.data.address;
-      newState[action.data.id].city = action.data.city;
-      newState[action.data.id].state = action.data.state;
-      newState[action.data.id].country = action.data.country;
-      newState[action.data.id].name = action.data.name;
-      newState[action.data.id].price = action.data.price;
-      newState[action.data.id].description = action.data.description;
-      newState[action.data.id].catagory = action.data.catagory;
-
+      newState.listing = Object.assign({}, newState.listing)
+      newState[action.data.id]= {...newState[action.data.id],...action.data}
       return newState;
+      // newState[action.data.id].address = action.data.address;
+      // newState[action.data.id].city = action.data.city;
+      // newState[action.data.id].state = action.data.state;
+      // newState[action.data.id].country = action.data.country;
+      // newState[action.data.id].name = action.data.name;
+      // newState[action.data.id].price = action.data.price;
+      // newState[action.data.id].description = action.data.description;
+      // newState[action.data.id].catagory = action.data.catagory;
     default:
       return state;
 }

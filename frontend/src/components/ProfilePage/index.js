@@ -23,9 +23,9 @@ function ProfilePage(){
     const reviewNames = reviews?.map(review => listing[review.listingId])
 
 
-    useEffect(()=>{
-        dispatch(restoreUser())
-    },[booking])
+    // useEffect(()=>{
+    //     dispatch(restoreUser())
+    // },[booking])
 
     if(!sessionUser){
         return <Redirect to="/" />
@@ -53,7 +53,7 @@ function ProfilePage(){
     )
     const reviewCards = reviewNames?.map((rev,idx)=>{
       return  <div key={idx} className="review-card">
-            <div className="bookings-title" >{rev.name}</div>
+            <div className="bookings-title" >{rev?.name}</div>
            <div className="review-wrapper">
 
             <div>{sessionUser.Reviews[idx].review}</div>
@@ -72,7 +72,7 @@ function ProfilePage(){
             </div>
         </div>
     })
-    console.log(lister)
+    console.log("rerender profileXXXXXXXXXXXXXXXXXXXX")
 
 
     return(
