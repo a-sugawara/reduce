@@ -63,7 +63,7 @@ export const listed = () => async (dispatch) => {
 }
 
 export const unlisted = (id) => async (dispatch)=>{
-  await csrfFetch(`/api/listings/${id}`,{
+  await csrfFetch(`/api/review/${id}`,{
     method: 'DELETE',
   })
   dispatch(removeReview(id))
@@ -73,27 +73,17 @@ export const updateRev = (listing) => async dispatch =>{
   const {
     id,
     userId,
-    address,
-    city,
-    state,
-    country,
-    catagoryId,
-    name,
-    price,
-    description
+    listingId,
+    review,
+    rating
   } = listing;
-  const res = await csrfFetch(`/api/listings/${id}`,{
+  const res = await csrfFetch(`/api/review/${id}`,{
     method: 'PUT',
     body: JSON.stringify({
       userId,
-      address,
-      city,
-      state,
-      country,
-      catagoryId,
-      name,
-      price,
-      description
+      listingId,
+      review,
+      rating
     }),
   })
   const data = res.json()

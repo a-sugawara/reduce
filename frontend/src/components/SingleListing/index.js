@@ -9,6 +9,8 @@ import {book} from "../../store/booking"
 import {reviewer} from "../../store/review"
 import './SingleListing.css';
 import { Redirect, useHistory } from 'react-router-dom';
+import ReviewEditModal from"../ReviewEditModal"
+import ReviewDeleteModal from"../ReviewDeleteModal"
 
 function SingleListing(){
     const dispatch = useDispatch();
@@ -20,6 +22,7 @@ function SingleListing(){
     const [endTime, setETime] = useState('');
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(3);
+
 
 
 
@@ -52,14 +55,21 @@ function SingleListing(){
         if (listing.Reviews){
             reviews = listing.Reviews.map((review,idx)=>{
                 if(sessionUser?.id === review.userId){
-                return  <div className="review">
-                            <p key={idx}>{review.review}</p>
-                            <button >delete</button>
-                            <button >edit</button>
+
+                return  <div key={idx} className="review">
+                            {review.User.username}
+                            <p>{review.review}</p>
+                            <ReviewEditModal reviewId={review.id}/>
+                            <ReviewDeleteModal reviewId={review.id}/>
+
                         </div>
                 }else{
                     return  <div className="review">
-                                <p key={idx}>{review.review}</p>
+                                <p>{review.User.username}</p>
+                                <p >{review.review}</p>
+                                <div className="bar-holder">
+                                    <div className={`star${review.rating}`} ></div>
+                                </div>
                             </div>
                 }
             })

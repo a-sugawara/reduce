@@ -14,7 +14,7 @@ function ListingEditForm({listing, onClose}) {
   const [city, setCity] = useState(listing.city);
   const [state, setSt] = useState(listing.state);
   const [country, setCountry] = useState(listing.country);
-  const [catagory, setCatagory] = useState(+listing.catagory);
+  const [catagory, setCatagory] = useState('');
   const [description, setDescription] = useState(listing.description);
 //   const [lat, setLat] = useState('');
 //   const [lng, setLng] = useState('');
@@ -22,12 +22,12 @@ function ListingEditForm({listing, onClose}) {
   const [price, setPrice] = useState(listing.price);
   const [errors, setErrors] = useState([]);
   const history = useHistory()
+  const catagories = useSelector(state => state.catagory.catagories);
 
   useEffect(() => {
-    dispatch(getCatagories())
-    },[])
+    dispatch(getCatagories()).then(setCatagory( +listing.catagoryId))
+    },[dispatch])
 
-  const catagories = useSelector(state => state.catagory.catagories);
 
 
 
