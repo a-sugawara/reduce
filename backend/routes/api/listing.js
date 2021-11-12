@@ -85,7 +85,7 @@ router.post(
 
 router.get('/',asyncHandler(async(req,res)=>{
   const listing= await Listing.findAll({
-    include:[{model:Image},{model:User},{model:Booking},{model:Review}]
+    include:[{model:Image},{model:User},{model:Booking},{model:Review,include:User}]
   })
   res.json({listing})
 
