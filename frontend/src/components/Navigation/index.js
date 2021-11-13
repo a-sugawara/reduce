@@ -35,7 +35,7 @@ function Navigation({ isLoaded }){
         <div className="nav-btns">
           <LoginFormModal />
           <SignUpFormModal/>
-          <button onClick={handleDemo}>Demo</button>
+          <div className="pro-btn" onClick={handleDemo}>Demo</div>
         </div>
     );
   }

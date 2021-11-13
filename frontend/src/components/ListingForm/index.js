@@ -26,7 +26,7 @@ function ListingForm() {
     },[])
 
   const catagories = useSelector(state => state.catagory.catagories);
-  
+
   const validate = () =>{
     const errors =[]
     if(price > 10000) errors.push("Cost Cannot exceed $10000")
@@ -71,14 +71,16 @@ function ListingForm() {
 
 
   }
-
-
-
-  return (
-    <>
+  let eMessage
+  if(errors.length > 0) {
+      eMessage =
         <ul className="errors-list">
             {errors.map((error, id) => <li key={id}>{error}</li>)}
         </ul>
+  }
+
+  return (
+    <div className="form-wrapper">
         <form className="Radioform" onSubmit={handleSubmit}>
             <h1 className="white" >Become a Producer</h1>
             <input
@@ -185,7 +187,8 @@ function ListingForm() {
 
             <button type="submit">Submit</button>
         </form>
-    </>
+        {eMessage}
+    </div>
   );
 }
 

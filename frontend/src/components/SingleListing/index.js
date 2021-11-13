@@ -26,7 +26,6 @@ function SingleListing(){
 
 
 
-
     const handleBooking= () =>{
 
         dispatch(book({
@@ -57,20 +56,31 @@ function SingleListing(){
             reviews = listing.Reviews.map((review,idx)=>{
                 if(sessionUser?.id === review.userId){
 
-                return  <div key={idx} className="review">
-                            {review.User?review.User.username : sessionUser.username}
-                            <p>{review.review}</p>
+                return  <>
+                        <div key={idx} className="review">
+                            <div className="userName">
+                                {review.User?review.User.username : sessionUser.username}
+                            </div>
+                            <div className="userReview">
+                                <p >{review.review}</p>
+                            </div>
                             <div className="bar-holder">
                                 <div className={`star${review.rating}`} ></div>
                             </div>
-                            <ReviewEditModal reviewId={review.id}/>
-                            <ReviewDeleteModal reviewId={review.id}/>
-
                         </div>
+                            <div className="prot-btn">
+                                <ReviewEditModal reviewId={review.id}/>
+                                <ReviewDeleteModal reviewId={review.id}/>
+                            </div>
+                        </>
                 }else{
                     return  <div className="review">
-                                <p>{review.User.username}</p>
-                                <p >{review.review}</p>
+                                <div className="userName">
+                                    <p>{review.User.username}</p>
+                                </div>
+                                <div className="userReview">
+                                    <p >{review.review}</p>
+                                </div>
                                 <div className="bar-holder">
                                     <div className={`star${review.rating}`} ></div>
                                 </div>
@@ -157,7 +167,7 @@ function SingleListing(){
                     </form>
 
 
-            ReviewForm =
+            ReviewForm =<>
                 <form className="review-form" onSubmit={handleReview}>
                     <textarea
                         className="review-input"
@@ -177,10 +187,19 @@ function SingleListing(){
                             onChange={e=> setRating(e.target.value)}
                             required
                         />
+                        {/* <div class="rating">
+                            <span className={"star"} onClick={e=> setRating(1)}>☆</span>
+                            <span className={"star"} onClick={e=> setRating(2)}>☆</span>
+                            <span className={"star"} onClick={e=> setRating(3)}>☆</span>
+                            <span className={"star"} onClick={e=> setRating(4)}>☆</span>
+                            <span className={"star"} onClick={e=> setRating(5)}>☆</span>
+
+                        </div> */}
                     </div>
 
                     <button class="nav-btn">Post</button>
                 </form>
+                </>
         }
     }
 
@@ -197,17 +216,17 @@ function SingleListing(){
                             <img alt="photo2" className="photo2" src={photo2}/>
                             <img alt="photo3" className="photo3" src={photo3}/>
                         </div>
-                        <div>
+                        <div className="lastPhoto">
                             <img alt="photo4" className="photo4" src={photo4}/>
                         </div>
                     </div>
                 </div>
                 {buttons}
-                <div>
-                        {ReviewForm}
-                    <div>{listing?.description}</div>
-                </div>
-                {reviews}
+                
+                    {ReviewForm}
+                    <div></div>
+
+                    {reviews}
             </div>
             <div className ="sidebar2"></div>
         </div>
