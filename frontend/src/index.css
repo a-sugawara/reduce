@@ -167,6 +167,28 @@ details > summary::-webkit-details-marker {
     background-color:rgba(255, 166, 0, 0.5);
 
 }
+.delete-btn{
+    background-color: white;
+    color: black;
+    font-size:1.2rem;
+    border-radius:40px;
+    outline:none;
+    border: none;
+    padding:5px 15px;
+    height: fit-content;
+    transition: all 1s ease;
+    margin-left: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+}
+.delete-btn:hover{
+    box-shadow: 0 0 20px black;
+    cursor: pointer;
+    background-color:rgba(255, 0, 0, 0.5);
+
+
+}
 .errors-list{
     display:flex;
     flex-direction: column;
@@ -180,9 +202,9 @@ details > summary::-webkit-details-marker {
     height: 30rem;
 
 }
+
 .errors-list > li{
 
     margin: 3rem;
-
 
 }

@@ -69,7 +69,7 @@ function SingleListing(){
                             </div>
                         </div>
                             <div className="prot-btn">
-                                <ReviewEditModal reviewId={review.id}/>
+                                <ReviewEditModal reviewId={review.id} reviewText={review.review}/>
                                 <ReviewDeleteModal reviewId={review.id}/>
                             </div>
                         </>
@@ -187,14 +187,6 @@ function SingleListing(){
                             onChange={e=> setRating(e.target.value)}
                             required
                         />
-                        {/* <div class="rating">
-                            <span className={"star"} onClick={e=> setRating(1)}>☆</span>
-                            <span className={"star"} onClick={e=> setRating(2)}>☆</span>
-                            <span className={"star"} onClick={e=> setRating(3)}>☆</span>
-                            <span className={"star"} onClick={e=> setRating(4)}>☆</span>
-                            <span className={"star"} onClick={e=> setRating(5)}>☆</span>
-
-                        </div> */}
                     </div>
 
                     <button class="nav-btn">Post</button>
@@ -222,7 +214,7 @@ function SingleListing(){
                     </div>
                 </div>
                 {buttons}
-                
+
                     {ReviewForm}
                     <div></div>
 

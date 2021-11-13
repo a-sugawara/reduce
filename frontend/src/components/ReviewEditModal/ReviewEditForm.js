@@ -6,25 +6,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 // import './ListingForm.css';
 
-function ReviewEditForm({ reviewId, onClose}) {
+function ReviewEditForm({ reviewId, onClose, reviewText}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const {id} = useParams()
 
 
-const [review, setReview] = useState('');
+const [review, setReview] = useState(reviewText);
 const [rating, setRating] = useState(3);
   const [errors, setErrors] = useState([]);
   const history = useHistory()
   const catagories = useSelector(state => state.catagory.catagories);
 
 useEffect(() => {
+  console.log(reviewText)
+  console.log(reviewId)
 
 },[dispatch])
 
 const handleReview= (e) =>{
     e.preventDefault();
-    console.log(reviewId)
     dispatch(updateRev({
         id:reviewId,
         userId: sessionUser.id,
@@ -37,31 +38,36 @@ const handleReview= (e) =>{
 }
 
 
-
   if(!sessionUser){
       return null
   }
 
-
-
-
   return (
-        <form onSubmit={handleReview}>
-                <input
-                    type="text"
-                    value={review}
-                    onChange={e=> setReview(e.target.value)}
-                />
-                <input
-                    type="number"
-                    min={1}
-                    max={5}
-                    value={rating}
-                    onChange={e=> setRating(e.target.value)}
-                />
+    <>
+    <form className="review-form" onSubmit={handleReview}>
+        <textarea
+            className="review-input"
+            type="textarea"
+            value={review}
+            onChange={e=> setReview(e.target.value)}
+            required
+            />
+        <div>
+        Rating:&nbsp;&nbsp;&nbsp;
+            <input
+                className="rating"
+                type="number"
+                min={1}
+                max={5}
+                value={rating}
+                onChange={e=> setRating(e.target.value)}
+                required
+            />
+        </div>
 
-            <button>Leave a review</button>
-        </form>
+        <button class="nav-btn">Post</button>
+    </form>
+    </>
   );
 }
 

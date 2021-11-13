@@ -16,7 +16,11 @@ function ListingDeletePrompt({listing}){
   return (
     <div>
         Are you sure you want to delete {listing.name}
-        <button onClick={handleDelete}>delete</button>
+
+        <button
+         onClick={handleDelete}
+          className="delete-btn"
+        >Delete</button>
     </div>
   );
 }

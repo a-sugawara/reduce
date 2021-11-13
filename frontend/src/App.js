@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { Route, Switch, NavLink } from 'react-router-dom';
 import SearchBar from "./components/SearchBar"
-import LoginFormPage from './components/LoginFormPage';
-import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import * as sessionActions from "./store/session";
-import CatagoryButton from "./components/CatagoryButton";
 import ListingForm from "./components/ListingForm";
 import Listings from "./components/Listings";
 import CatagoryListings from "./components/CatagoryListings";

@@ -73,33 +73,41 @@ function ListingEditForm({listing, onClose}) {
     onClose()
   }
 
-
-
-  return (
-    <>
+  let eMessage
+  if(errors.length > 0) {
+      eMessage =
         <ul className="errors-list">
             {errors.map((error, id) => <li key={id}>{error}</li>)}
         </ul>
-        <form onSubmit={handleSubmit}>
+  }
+
+  return (
+    <div className="form-wrapper">
+        <form className="Radioform" onSubmit={handleSubmit}>
+            <h1 className="white" >Become a Producer</h1>
             <input
             type="text"
             placeholder="Address"
             min="1"
             required
+            className="form-input"
             value={address}
             onChange={e=> setAddress(e.target.value)} />
+
             <input
             type="text"
             placeholder="City"
             min="1"
             required
             value={city}
+            className="form-input"
             onChange={e=> setCity(e.target.value)} />
             <input
             type="text"
             placeholder="State"
             min="1"
             required
+            className="form-input"
             value={state}
             onChange={e=> setSt(e.target.value)} />
             <input
@@ -108,12 +116,15 @@ function ListingEditForm({listing, onClose}) {
             min="1"
             required
             value={country}
+            className="form-input"
             onChange={e=> setCountry(e.target.value)} />
+
             <input
             type="text"
             placeholder="Name"
             min="1"
             required
+            className="form-input"
             value={name}
             onChange={e=> setName(e.target.value)} />
             <input
@@ -121,27 +132,30 @@ function ListingEditForm({listing, onClose}) {
             placeholder="Price"
             min="1"
             required
+            className="form-input"
             value={price}
             onChange={e=> setPrice(e.target.value)} />
             <textarea
             placeholder="Description"
             min="1"
             required
+            className="form-text-input"
             value={description}
             onChange={e=> setDescription(e.target.value)} />
-
-            <div>
-                <label>
+            <div className="radioButtons"> Please Pick a Category</div>
+            <div className="radiowrapper">
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
                         name="photoType"
+                        className="radioButtons"
                         checked={catagory === catagories[0][0]}
                         onChange={(e) => setCatagory(catagories[0][0])}
                     />
                     Music
                 </label>
-                <label>
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
@@ -151,7 +165,7 @@ function ListingEditForm({listing, onClose}) {
                     />
                     Photography
                 </label>
-                <label>
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
@@ -161,7 +175,7 @@ function ListingEditForm({listing, onClose}) {
                     />
                     Art
                 </label>
-                <label>
+                <label className="radioButtons">
                     <input
                         type="radio"
                         value="cat"
@@ -172,10 +186,10 @@ function ListingEditForm({listing, onClose}) {
                     Film
                 </label>
             </div>
-
-            <button type="submit">Submit</button>
+            <button class="nav-btn" type="submit">Submit</button>
         </form>
-    </>
+        {eMessage}
+    </div>
   );
 }
 
