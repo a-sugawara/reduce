@@ -171,7 +171,7 @@ function ListingForm() {
                         checked={catagory === catagories[2][0]}
                         onChange={(e) => setCatagory(catagories[2][0])}
                     />
-                    Art
+                    Film
                 </label>
                 <label className="radioButtons">
                     <input
@@ -181,7 +181,7 @@ function ListingForm() {
                         checked={catagory === catagories[3][0]}
                         onChange={(e) => setCatagory(catagories[3][0])}
                     />
-                    Film
+                    Art
                 </label>
             </div>
 

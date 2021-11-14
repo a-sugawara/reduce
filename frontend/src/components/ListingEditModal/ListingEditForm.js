@@ -173,7 +173,7 @@ function ListingEditForm({listing, onClose}) {
                         checked={catagory === catagories[2][0]}
                         onChange={(e) => setCatagory(catagories[2][0])}
                     />
-                    Art
+                    Film
                 </label>
                 <label className="radioButtons">
                     <input
@@ -183,7 +183,7 @@ function ListingEditForm({listing, onClose}) {
                         checked={catagory === catagories[3][0]}
                         onChange={(e) => setCatagory(catagories[3][0])}
                     />
-                    Film
+                    Art
                 </label>
             </div>
             <button class="nav-btn" type="submit">Submit</button>
