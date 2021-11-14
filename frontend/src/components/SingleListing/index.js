@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink , useParams} from 'react-router-dom';
 import ListingEditModal from "../ListingEditModal"
 import ListingDeleteModal from '../ListingDeleteModal';
+import ListingImageModal from '../ListingImageModal';
 import {book} from "../../store/booking"
 import {reviewer} from "../../store/review"
 import './SingleListing.css';
@@ -71,6 +72,7 @@ function SingleListing(){
                             <div className="prot-btn">
                                 <ReviewEditModal reviewId={review.id} reviewText={review.review}/>
                                 <ReviewDeleteModal reviewId={review.id}/>
+
                             </div>
                         </>
                 }else{
@@ -129,6 +131,7 @@ function SingleListing(){
                 <div>
                     <ListingEditModal listing={listing}/>
                     <ListingDeleteModal listing={listing}/>
+                    <ListingImageModal listing={listing}/>
                 </div>
         }else{
             buttons =

@@ -4,9 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     listingId:{
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        len: [3, 256]
-      },
     },
     url: {
       type: DataTypes.STRING,
