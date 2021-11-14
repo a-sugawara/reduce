@@ -96,12 +96,12 @@ const sessionReducer = (state = initialState, action) => {
       newState.user.Bookings = newState.user.Bookings.slice()
       return newState;
     case UNBOOK:
-      // newState = Object.assign({}, state);
-      // newState.user = Object.assign({},state.user)
-      // const idx = newState.user.Bookings.findIndex(Booking => Booking.id ===action.booking.id)
-      // newState.user.Bookings.splice(idx, 1);
-      // newState.user.Bookings = newState.user.Bookings.slice()
-      // return newState
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      const idx = newState.user.Bookings.findIndex(Booking => Booking.id ===action.booking.id)
+      newState.user.Bookings.splice(idx, 1);
+      newState.user.Bookings = newState.user.Bookings.slice()
+      return newState
     case DELETE_LIST:
       newState = Object.assign({}, state);
       newState.user = Object.assign({},state.user)
