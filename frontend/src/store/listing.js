@@ -4,6 +4,7 @@ const POST_LIST = 'listing/postListing'
 const LOAD_LIST = 'listing/load'
 const DELETE_LIST = 'listing/delete'
 const UPDATE_LIST = 'listing/update'
+const UPDATE_REVIEW = 'review/update'
 const POST_REVIEW = 'review/postListing'
 const POST_IMAGE  = 'image/postImage'
 
@@ -173,6 +174,13 @@ switch (action.type) {
       newState = Object.assign({}, state); //newstate= {..state}
       newState.listing = Object.assign({}, newState.listing)
       newState[action.data.id]= {...newState[action.data.id],...action.data}
+      return newState;
+    case UPDATE_REVIEW:
+      newState = Object.assign({}, state); //newstate= {..state}
+      newState.listing = Object.assign({}, newState.listing)
+      console.log("action.dataXXXXXXXXXXXXXXXXX",action.data)
+      const reviewidx = newState[action.data.updated.listingId].Reviews.findIndex(review => review.id === action.data.updated.id)
+      newState[action.data.updated.listingId].Reviews[reviewidx]= action.data.updated
       return newState;
       // newState[action.data.id].address = action.data.address;
       // newState[action.data.id].city = action.data.city;

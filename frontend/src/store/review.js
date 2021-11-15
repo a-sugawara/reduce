@@ -86,7 +86,7 @@ export const updateRev = (listing) => async dispatch =>{
       rating
     }),
   })
-  const data = res.json()
+  const data = await res.json()
   dispatch(updateReview(data))
   return res
 }
@@ -112,7 +112,8 @@ switch (action.type) {
       return newState;
     case UPDATE_REVIEW:
       newState = Object.assign({}, state);
-      newState[action.data.id] = action.payload;
+      
+      newState[action.data.updated.id] = action.data.updated;
       return newState;
     default:
       return state;
