@@ -8,6 +8,7 @@ const UPDATE_LIST = 'listing/update'
 const POST_LIST = 'listing/postListing'
 const DELETE_LIST = 'listing/delete'
 const POST_REVIEW = 'review/postListing'
+const UPDATE_REVIEW = 'review/update'
 const DELETE_REVIEW = 'review/delete'
 
 const setUser = (user) => {
@@ -84,11 +85,23 @@ const sessionReducer = (state = initialState, action) => {
       newState.user = Object.assign({},state.user)
       newState.user.Listings = newState.user.Listings.concat(action.listing)
       return newState;
+    case UPDATE_LIST:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      const listingidx = newState.user.Listings.findIndex(listin => listin.id ===action.data.id)
+      newState.user.Listings[listingidx] = action.data
+      return newState
     case POST_REVIEW:
       newState = Object.assign({}, state);
       newState.user = Object.assign({},state.user)
       newState.user.Reviews = newState.user.Reviews.concat(action.review)
       return newState;
+    case UPDATE_REVIEW:
+      newState = Object.assign({}, state);
+      newState.user = Object.assign({},state.user)
+      const reviewidx = newState.user.Reviews.findIndex(review => review.id === action.data.updated.id)
+      newState.user.Reviews[reviewidx] = action.data.updated
+      return newState
     case ADD_BOOKING:
       newState = Object.assign({}, state);
       newState.user = Object.assign({},state.user)

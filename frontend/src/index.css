@@ -50,8 +50,8 @@ footer{
     margin:4rem;
     background-color: rgba(255, 255, 255, 0.808);
     padding:1rem;
-    padding-top: 2rem;
-    border-radius:120px;
+    padding-top: 3rem;
+    border-radius:15px;
     box-shadow: 0 0 20px rgba(204, 135, 8, 0.465);
 }
 .btn-group{
@@ -71,7 +71,7 @@ footer{
   background-color: white;
   color: black;
   font-size:1.2rem;
-  border-radius:40px;
+  border-radius:7px;
   outline:none;
   border: none;
   padding:5px 15px;
@@ -86,7 +86,7 @@ footer{
   background-color: black;
   color: white;
   font-size:1.2rem;
-  border-radius:40px;
+  border-radius:7px;
   outline:none;
   border: none;
   padding:5px 15px;
@@ -152,7 +152,7 @@ details > summary::-webkit-details-marker {
     background-color: white;
     color: black;
     font-size:1.2rem;
-    border-radius:40px;
+    border-radius:7px;
     outline:none;
     border: none;
     padding:5px 15px;
@@ -166,4 +166,43 @@ details > summary::-webkit-details-marker {
     cursor: pointer;
     background-color:rgba(255, 166, 0, 0.5);
 
+}
+.delete-btn{
+    background-color: white;
+    color: black;
+    font-size:1.2rem;
+    border-radius:40px;
+    outline:none;
+    border: none;
+    padding:5px 15px;
+    height: fit-content;
+    transition: all 1s ease;
+    margin-left: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+}
+.delete-btn:hover{
+    box-shadow: 0 0 20px black;
+    cursor: pointer;
+    background-color:rgba(255, 0, 0, 0.5);
+
+
+}
+.errors-list{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    margin-top:20rem;
+    list-style: none;
+    padding-left: 3rem;
+    gap: 1rem;
+    border-radius: 50px;
+    background-color:rgb(255, 123, 123);
+    height: 30rem;
+
+}
+
+.errors-list > li{
+    margin: 3rem;
 }

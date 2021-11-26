@@ -19,9 +19,11 @@ router.post(
     validateImage,
     asyncHandler(async (req, res,next) => {
       const {
+        listingId,
         url
     } = req.body;
       const image = await Image.create({
+        listingId,
         url
       });
       if (!image) {

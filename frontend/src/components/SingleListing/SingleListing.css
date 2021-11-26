@@ -43,16 +43,16 @@
 
 }
 .photo3{
-    width: 50%;
+    width: 49.7%;
     height:auto;
     border-top-right-radius: 20px;
 
 }
 .photo4{
     width: 100%;
-    height:auto;
+    height:100%;
     border-bottom-right-radius: 20px;
-    margin: 2px 0 0 2px;
+
 
 
 }
@@ -201,18 +201,40 @@
     flex-direction: column;
     margin: 1rem;
     min-height: 6rem;
+    width: 80%;
     border-bottom: 1px solid grey;
     justify-content: center;
     align-items: center;
     gap:1.5rem;
     padding-bottom: 1rem;
+
 }
 .review-input{
     width:90%;
     height:10rem;
     resize:none;
     font-size:1.2rem;
+    padding: 1rem;
+    border-radius: 40px;
+    /* border: none; */
+    outline: none;
+    /* background-color: #5959595d; */
 }
 .rating{
-    width:40%;
+    width:25%;
+}
+.userReview{
+    width:65%;
+}
+.userName{
+    width:20%;
+}
+.prot-btn{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.listing-buttons{
+    display: flex;
+    gap: 1rem;
 }

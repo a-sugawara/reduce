@@ -39,7 +39,9 @@ const handleReview= () =>{
   return (
         <form onSubmit={handleReview}>
             Are your sure you want to delete this review?
-            <button>Delete</button>
+            <button
+              className="delete-btn"
+            >Delete</button>
         </form>
   );
 }

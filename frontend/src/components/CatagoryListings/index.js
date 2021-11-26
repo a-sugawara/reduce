@@ -10,13 +10,17 @@ function CatagoryListings() {
     const {catId} = useParams()
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(true);
     // if(!sessionUser){
     //     <Redirect to="/" />
     // }
     console.log(catId)
+    // useEffect(() => {
+    //     dispatch(listingActions.listed()).then(() => setIsLoaded(true))
+    //     console.log(catId)
+    // }, [dispatch]);
     useEffect(() => {
-        dispatch(listingActions.listed()).then(() => setIsLoaded(true))
+        dispatch(listingActions.listed())
         console.log(catId)
     }, [dispatch]);
     let lister = useSelector(state => state.listing)

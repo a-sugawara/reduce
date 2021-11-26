@@ -4,8 +4,16 @@ const POST_LIST = 'listing/postListing'
 const LOAD_LIST = 'listing/load'
 const DELETE_LIST = 'listing/delete'
 const UPDATE_LIST = 'listing/update'
+const UPDATE_REVIEW = 'review/update'
 const POST_REVIEW = 'review/postListing'
+const POST_IMAGE  = 'image/postImage'
 
+const postImage = (image) => {
+    return {
+      type: POST_IMAGE,
+      image,
+    };
+};
 const postListing = (listing) => {
     return {
       type: POST_LIST,
@@ -33,6 +41,24 @@ const updateList = (data)=>{
 }
 
 
+export const imager = img => async (dispatch) => {
+    const {
+      listingId,
+      url
+    } = img;
+
+    const response = await csrfFetch("/api/image", {
+      method: "POST",
+      body: JSON.stringify({
+        listingId,
+        url
+      }),
+    });
+    const data = await response.json();
+    // console.log(data,"OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+    dispatch(postImage(data.image));
+    return data;
+};
 export const lister = listing => async (dispatch) => {
     const {
         userId,
@@ -134,6 +160,12 @@ switch (action.type) {
       newState[review.listingId] = Object.assign({}, newState[review.listingId]); //newstate= {..state}
       newState[review.listingId].Reviews = newState[review.listingId].Reviews.concat(review)
       return newState;
+    case POST_IMAGE:
+      const {image} = action
+      newState = Object.assign({}, state)
+      newState[image.listingId] = Object.assign({}, newState[image.listingId]); //newstate= {..state}
+      newState[image.listingId].Images = newState[image.listingId].Images.concat(image)
+      return newState;
     case DELETE_LIST:
       newState = Object.assign({}, state);
       delete newState[action.id]
@@ -142,6 +174,13 @@ switch (action.type) {
       newState = Object.assign({}, state); //newstate= {..state}
       newState.listing = Object.assign({}, newState.listing)
       newState[action.data.id]= {...newState[action.data.id],...action.data}
+      return newState;
+    case UPDATE_REVIEW:
+      newState = Object.assign({}, state); //newstate= {..state}
+      newState.listing = Object.assign({}, newState.listing)
+      console.log("action.dataXXXXXXXXXXXXXXXXX",action.data)
+      const reviewidx = newState[action.data.updated.listingId].Reviews.findIndex(review => review.id === action.data.updated.id)
+      newState[action.data.updated.listingId].Reviews[reviewidx]= action.data.updated
       return newState;
       // newState[action.data.id].address = action.data.address;
       // newState[action.data.id].city = action.data.city;
