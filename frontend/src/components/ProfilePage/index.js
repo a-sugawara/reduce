@@ -45,7 +45,7 @@ function ProfilePage(){
                 <div>Start Time: {sessionUser.Bookings[idx].startTime.split("T")[1]}</div>
                 <div>End Date: {sessionUser.Bookings[idx].endTime.split("T")[0]}</div>
                 <div>End Time: {sessionUser.Bookings[idx].endTime.split("T")[1]}</div>
-                <button  class="nav-btn" onClick={()=>handleBookingDelete(sessionUser.Bookings[idx].id)} >cancel</button>
+                <button  className="nav-btn" onClick={()=>handleBookingDelete(sessionUser.Bookings[idx].id)} >cancel</button>
                 </div>
             </div>
         )}

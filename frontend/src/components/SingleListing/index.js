@@ -76,7 +76,7 @@ function SingleListing(){
                             </div>
                         </>
                 }else{
-                    return  <div className="review">
+                    return  <div key={idx}  className="review">
                                 <div className="userName">
                                     <p>{review.User.username}</p>
                                 </div>
@@ -128,7 +128,7 @@ function SingleListing(){
     if(sessionUser){
         if(sessionUser.id === listing?.userId){
             buttons =
-                <div>
+                <div className="listing-buttons">
                     <ListingEditModal listing={listing}/>
                     <ListingDeleteModal listing={listing}/>
                     <ListingImageModal listing={listing}/>
@@ -192,7 +192,7 @@ function SingleListing(){
                         />
                     </div>
 
-                    <button class="nav-btn">Post</button>
+                    <button className="nav-btn">Post</button>
                 </form>
                 </>
         }

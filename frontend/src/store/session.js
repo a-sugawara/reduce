@@ -99,7 +99,6 @@ const sessionReducer = (state = initialState, action) => {
     case UPDATE_REVIEW:
       newState = Object.assign({}, state);
       newState.user = Object.assign({},state.user)
-     
       const reviewidx = newState.user.Reviews.findIndex(review => review.id === action.data.updated.id)
       newState.user.Reviews[reviewidx] = action.data.updated
       return newState

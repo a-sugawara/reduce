@@ -231,4 +231,10 @@
 }
 .prot-btn{
     display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.listing-buttons{
+    display: flex;
+    gap: 1rem;
 }

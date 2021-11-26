@@ -65,7 +65,7 @@ const handleReview= (e) =>{
             />
         </div>
 
-        <button class="nav-btn">Post</button>
+        <button className="nav-btn">Post</button>
     </form>
     </>
   );

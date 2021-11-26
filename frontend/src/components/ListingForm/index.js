@@ -185,7 +185,7 @@ function ListingForm() {
                 </label>
             </div>
 
-            <button class="nav-btn" type="submit">Submit</button>
+            <button className="nav-btn" type="submit">Submit</button>
         </form>
         {eMessage}
     </div>
