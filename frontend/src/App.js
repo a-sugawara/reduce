@@ -11,6 +11,7 @@ import SingleListing from"./components/SingleListing"
 import ProfilePage from "./components/ProfilePage"
 import * as listingActions from "./store/listing";
 import BubbleDivs from "./components/BubbleDivs"
+import InfoBlocks from "./components/InfoBlocks";
 
 
 
@@ -36,11 +37,12 @@ function App() {
         <div className="mainbar">
             <Switch>
               <Route exact path="/">
-              <BubbleDivs color1={"black"} color3={"black"} side={"left"}  size={"thin"}/>
+              {/* <BubbleDivs color1={"black"} color3={"black"} side={"left"}  size={"thin"}/> */}
               <SearchBar/>
-              <BubbleDivs color1={"black"} color2={"black"} color3={"yellow"} side={"left"}  size={"thin"}/>
+              <InfoBlocks/>
+              {/* <BubbleDivs color1={"black"} color2={"black"} color3={"yellow"} side={"left"}  size={"thin"}/>
               <BubbleDivs color1={"yellow"} color2={"black"} color3={"copper"} side={"right"}  size={"thin"}/>
-              <BubbleDivs color1={"copper"} color2={"yellow"} color3={"white"} side={"left"}  size={"thin"}/>
+              <BubbleDivs color1={"copper"} color2={"yellow"} color3={"white"} side={"left"}  size={"thin"}/> */}
               {/* <BubbleDivs color1={"white"} color3={"white"} side={"right"} size={"thin"}/> */}
                 {/* <div className="btn-holder">
                   <div className="btn-group">

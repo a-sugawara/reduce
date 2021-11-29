@@ -14,7 +14,7 @@
 }
 .sentence{
     position: relative;
-    top: -20rem;
+    top: -9rem;
     display: flex;
     align-items: center;
     color: white;
@@ -23,7 +23,7 @@
 
 }
 .orange{
-    color: orange;
+    color: #D98F4E;
 }
 .search-bar{
     position: relative;
@@ -46,7 +46,7 @@
     border-radius:100px;
     padding: 1rem;
     max-width: 1000px;
-    box-shadow: 0 0 10px orange;
+    box-shadow: 0 0 15px #D98F4E;
 }
 .search-input{
     width: 95%;

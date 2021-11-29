@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import CatagoryButton from "../CatagoryButton"
 import"./SearchBar.css"
 
-const words = ["art", "music", "film"]
+const words = ["art", "music", "film", "photo"]
 
 const SearchBar = () =>{
     let [wordidx, setWordidx] = useState(0)
